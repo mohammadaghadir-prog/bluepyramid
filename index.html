@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Pyramid | Strategic & Financial Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#050e1c;--dark:#0a1628;--mid:#0d1f3c;--blue:#1e6fff;--glow:#4d9fff;--light:#7ec8ff;--cyan:#00d4ff;--silver:#c0cfe0;--white:#e8f0ff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--deep);color:var(--white);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;}
+
+/* INTRO */
+#intro{position:fixed;inset:0;z-index:9999;background:#020810;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#intro.exit{animation:introExit .9s cubic-bezier(.7,0,1,1) forwards;}
+@keyframes introExit{0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(1.05);}}
+.intro-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;}
+.intro-rings-wrap{position:relative;width:260px;height:260px;display:flex;align-items:center;justify-content:center;}
+.i-ring{position:absolute;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);animation:iRing 2.5s ease-out forwards;}
+.i-ring:nth-child(1){width:110px;height:110px;border:1px solid rgba(30,111,255,.25);animation-delay:.1s;}
+.i-ring:nth-child(2){width:170px;height:170px;border:1px solid rgba(30,111,255,.18);animation-delay:.3s;}
+.i-ring:nth-child(3){width:230px;height:230px;border:1px solid rgba(0,212,255,.12);animation-delay:.55s;}
+.i-ring:nth-child(4){width:290px;height:290px;border:1px solid rgba(30,111,255,.07);animation-delay:.8s;}
+@keyframes iRing{0%{transform:translate(-50%,-50%) scale(0);opacity:0;}50%{opacity:.7;}100%{transform:translate(-50%,-50%) scale(1);opacity:.2;}}
+.intro-logo-img{width:105px;position:relative;z-index:3;opacity:0;animation:iLogo 1s cubic-bezier(.34,1.56,.64,1) .3s forwards;}
+@keyframes iLogo{0%{opacity:0;transform:scale(.3) translateY(20px);filter:drop-shadow(0 0 0 transparent);}70%{filter:drop-shadow(0 0 50px rgba(77,159,255,1));}100%{opacity:1;transform:scale(1) translateY(0);filter:drop-shadow(0 0 25px rgba(30,111,255,.9));}}
+.intro-brand-text{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:900;letter-spacing:10px;background:linear-gradient(135deg,var(--glow),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:0;animation:fadeUp .7s .9s forwards;}
+.intro-sub-text{font-size:.7rem;letter-spacing:5px;color:var(--glow);text-transform:uppercase;opacity:0;animation:fadeUp .7s 1.2s forwards;}
+.intro-bar-wrap{width:200px;height:1px;background:rgba(77,159,255,.1);overflow:hidden;opacity:0;animation:fadeUp .4s 1.4s forwards;margin-top:10px;}
+.intro-bar{height:100%;width:0;background:linear-gradient(to right,var(--blue),var(--cyan));animation:iBar 1s 1.6s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes iBar{from{width:0;}to{width:100%;}}
+.intro-scan{position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(to right,transparent,rgba(0,212,255,.3),transparent);animation:scan 2.2s .2s ease-in-out forwards;opacity:0;}
+@keyframes scan{0%{top:0;opacity:.9;}100%{top:100%;opacity:0;}}
+
+/* BG CANVAS */
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;padding:16px 60px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(5,14,28,.97),rgba(5,14,28,.3));backdrop-filter:blur(18px);border-bottom:1px solid rgba(30,111,255,.05);}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo img{height:40px;filter:drop-shadow(0 0 10px rgba(30,111,255,.7));}
+.nav-brand-name{font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;letter-spacing:3px;background:linear-gradient(135deg,var(--glow),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+.nav-links a{color:var(--silver);text-decoration:none;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:2px;padding:8px 16px;transition:color .3s;text-transform:uppercase;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{background:linear-gradient(135deg,var(--blue),var(--glow))!important;color:#fff!important;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);box-shadow:0 0 20px rgba(30,111,255,.35);}
+.nav-lang{border:1px solid rgba(77,159,255,.25)!important;cursor:pointer;}
+.nav-lang:hover{border-color:var(--cyan)!important;}
+
+/* HERO */
+#hero-section{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:130px 80px 80px;gap:60px;max-width:1400px;margin:0 auto;}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:6px;color:var(--cyan);text-transform:uppercase;margin-bottom:22px;opacity:0;animation:fadeUp .8s .3s forwards;display:flex;align-items:center;gap:12px;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--cyan);}
+.hero-h1{font-family:'Cinzel',serif;font-size:clamp(2.6rem,4.2vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:2px;opacity:0;animation:fadeUp .9s .5s forwards;}
+.line1{display:block;background:linear-gradient(135deg,#fff,var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.line2{display:block;font-size:.5em;letter-spacing:6px;color:var(--silver);margin-top:10px;background:none;-webkit-text-fill-color:var(--silver);}
+.hero-desc{font-size:1.1rem;color:var(--silver);line-height:1.95;margin-top:28px;max-width:500px;font-weight:300;opacity:0;animation:fadeUp .9s .7s forwards;}
+.hero-desc strong{color:var(--light);font-weight:600;}
+.hero-metrics{display:flex;gap:40px;margin-top:36px;opacity:0;animation:fadeUp .9s .9s forwards;}
+.metric-val{font-family:'Cinzel',serif;font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,var(--glow),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;}
+.metric-lbl{font-size:.68rem;letter-spacing:2px;color:var(--silver);text-transform:uppercase;display:block;}
+.hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s 1.1s forwards;}
+.btn-p{padding:13px 34px;background:linear-gradient(135deg,var(--blue),var(--glow));color:#fff;text-decoration:none;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:2px;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:all .3s;box-shadow:0 0 28px rgba(30,111,255,.4);border:none;cursor:pointer;}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 0 45px rgba(30,111,255,.65);}
+.btn-o{padding:13px 34px;background:transparent;color:var(--glow);text-decoration:none;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:2px;border:1px solid rgba(77,159,255,.45);clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:all .3s;cursor:pointer;}
+.btn-o:hover{background:rgba(30,111,255,.1);transform:translateY(-3px);}
+.hero-right{display:flex;align-items:center;justify-content:center;opacity:0;animation:fadeUp 1s .6s forwards;}
+.hero-visual{position:relative;width:360px;height:360px;}
+.hero-logo-main{width:185px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);filter:drop-shadow(0 0 40px rgba(30,111,255,.9));animation:heroFloat 5s ease-in-out infinite;z-index:2;}
+@keyframes heroFloat{0%,100%{transform:translate(-50%,-50%) translateY(0);}50%{transform:translate(-50%,-50%) translateY(-13px);filter:drop-shadow(0 0 60px rgba(77,159,255,1));}}
+.hero-orbit{position:absolute;border-radius:50%;top:50%;left:50%;border:1px solid rgba(30,111,255,.14);}
+.h-o1{width:250px;height:250px;transform:translate(-50%,-50%);animation:spin 18s linear infinite;}
+.h-o2{width:330px;height:330px;transform:translate(-50%,-50%);animation:spin 28s linear infinite reverse;border-color:rgba(0,212,255,.09);}
+.h-o3{width:410px;height:410px;transform:translate(-50%,-50%);animation:spin 40s linear infinite;border-color:rgba(30,111,255,.05);}
+@keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(360deg);}}
+.h-dot{width:7px;height:7px;background:var(--glow);border-radius:50%;position:absolute;top:-3.5px;left:50%;transform:translateX(-50%);box-shadow:0 0 12px var(--glow);}
+.h-dot2{width:5px;height:5px;background:var(--cyan);border-radius:50%;position:absolute;top:-2.5px;left:50%;transform:translateX(-50%);box-shadow:0 0 10px var(--cyan);}
+.hero-scroll-ind{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:40px;grid-column:1/-1;justify-self:center;opacity:0;animation:fadeUp 1s 1.8s forwards;}
+.hero-scroll-ind span{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:4px;color:rgba(77,159,255,.45);}
+.scroll-line{width:1px;height:42px;background:linear-gradient(to bottom,var(--glow),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+/* SECTIONS */
+.sec{position:relative;z-index:1;padding:110px 80px;max-width:1300px;margin:0 auto;}
+.sec-eyebrow{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:6px;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sec-eyebrow::before{content:'';width:22px;height:1px;background:var(--cyan);}
+.sec-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,2.8vw,2.8rem);font-weight:700;background:linear-gradient(135deg,var(--white),var(--light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px;line-height:1.2;}
+.sec-rule{width:48px;height:2px;background:linear-gradient(to right,var(--blue),transparent);margin-bottom:55px;}
+.glow-sep{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(30,111,255,.18),rgba(0,212,255,.12),rgba(30,111,255,.18),transparent);position:relative;z-index:1;}
+
+/* SERVICES */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.srv-card{background:linear-gradient(135deg,rgba(26,58,107,.18),rgba(5,14,28,.88));border:1px solid rgba(77,159,255,.1);padding:34px 26px;position:relative;overflow:hidden;transition:all .4s;}
+.srv-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(to right,transparent,var(--blue),transparent);transform:scaleX(0);transition:transform .45s;}
+.srv-card:hover{border-color:rgba(77,159,255,.32);transform:translateY(-7px);box-shadow:0 22px 55px rgba(30,111,255,.16);}
+.srv-card:hover::before{transform:scaleX(1);}
+.srv-n{position:absolute;top:16px;left:20px;font-family:'Cinzel',serif;font-size:2.3rem;font-weight:900;color:rgba(30,111,255,.055);line-height:1;}
+.srv-icon{font-size:1.9rem;display:block;margin-bottom:16px;}
+.srv-card h3{font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;color:var(--light);letter-spacing:1.5px;margin-bottom:11px;}
+.srv-card p{color:var(--silver);font-size:.92rem;line-height:1.85;font-weight:300;}
+.srv-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px;}
+.srv-tag{font-size:.6rem;letter-spacing:1.5px;padding:3px 9px;border:1px solid rgba(77,159,255,.18);color:rgba(126,200,255,.55);text-transform:uppercase;font-family:'Cinzel',serif;}
+
+/* METHODOLOGY */
+.meth-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.meth-step{padding:40px 28px;position:relative;border-right:1px solid rgba(77,159,255,.08);transition:background .4s;}
+.meth-step:last-child{border-right:none;}
+.meth-step:hover{background:rgba(30,111,255,.04);}
+.meth-n{font-family:'Cinzel',serif;font-size:3rem;font-weight:900;color:rgba(30,111,255,.06);line-height:1;margin-bottom:18px;}
+.meth-icon-wrap{width:48px;height:48px;border:1px solid rgba(77,159,255,.22);display:flex;align-items:center;justify-content:center;margin-bottom:18px;position:relative;}
+.meth-icon-wrap::before{content:'';position:absolute;top:-1px;left:-1px;width:12px;height:12px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.meth-icon-wrap::after{content:'';position:absolute;bottom:-1px;right:-1px;width:12px;height:12px;border-bottom:2px solid var(--glow);border-right:2px solid var(--glow);}
+.meth-icon{font-size:1.5rem;}
+.meth-step h3{font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--light);letter-spacing:1px;margin-bottom:11px;}
+.meth-step p{color:var(--silver);font-size:.9rem;line-height:1.8;font-weight:300;}
+.meth-arrow{position:absolute;top:44px;right:-14px;font-size:1.2rem;color:rgba(0,212,255,.25);z-index:2;background:var(--deep);padding:0 2px;font-family:'Cinzel',serif;}
+
+/* FOUNDER */
+.founder-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:80px;align-items:start;}
+.founder-photo-frame{aspect-ratio:3/4;background:linear-gradient(135deg,rgba(26,58,107,.3),rgba(5,14,28,.92));border:1px solid rgba(77,159,255,.13);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.founder-photo-frame::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),var(--cyan),var(--blue),transparent);}
+.founder-initials{font-family:'Cinzel',serif;font-size:4.5rem;font-weight:900;color:rgba(30,111,255,.18);letter-spacing:4px;}
+.founder-corner{position:absolute;width:18px;height:18px;}
+.fc-tl{top:10px;left:10px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan);}
+.fc-tr{top:10px;right:10px;border-top:2px solid var(--glow);border-right:2px solid var(--glow);}
+.fc-bl{bottom:10px;left:10px;border-bottom:2px solid var(--glow);border-left:2px solid var(--glow);}
+.fc-br{bottom:10px;right:10px;border-bottom:2px solid var(--cyan);border-right:2px solid var(--cyan);}
+.founder-badge{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(5,14,28,.92);border:1px solid rgba(77,159,255,.22);padding:9px 18px;white-space:nowrap;text-align:center;}
+.founder-badge-title{font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:3px;color:var(--cyan);display:block;}
+.founder-badge-sub{font-size:.62rem;color:var(--silver);letter-spacing:1px;}
+.founder-name{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--white),var(--light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
+.founder-title-role{font-size:.95rem;color:var(--glow);letter-spacing:2px;margin-bottom:26px;font-weight:300;}
+.founder-bio{font-size:1.02rem;color:var(--silver);line-height:1.95;font-weight:300;margin-bottom:30px;}
+.founder-bio strong{color:var(--white);font-weight:600;}
+.founder-skills{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:34px;}
+.f-skill{display:flex;align-items:flex-start;gap:10px;}
+.f-skill-dot{width:7px;height:7px;background:linear-gradient(135deg,var(--blue),var(--cyan));flex-shrink:0;margin-top:5px;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);}
+.f-skill-text{font-size:.88rem;color:var(--silver);font-weight:300;line-height:1.5;}
+.founder-quote{border-right:3px solid var(--cyan);padding-right:18px;font-size:1.05rem;color:var(--light);font-style:italic;line-height:1.85;font-weight:300;}
+
+/* CASE STUDIES */
+.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.case-card{background:linear-gradient(135deg,rgba(13,31,60,.5),rgba(5,14,28,.92));border:1px solid rgba(77,159,255,.09);padding:38px;position:relative;overflow:hidden;transition:all .4s;}
+.case-card:hover{border-color:rgba(77,159,255,.28);transform:translateY(-5px);box-shadow:0 18px 48px rgba(30,111,255,.14);}
+.case-tag{position:absolute;top:18px;left:18px;background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.22);font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:2px;color:var(--glow);padding:4px 10px;text-transform:uppercase;}
+.case-industry{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:14px;margin-top:30px;}
+.case-card h3{font-family:'Cinzel',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:12px;line-height:1.35;}
+.case-card p{color:var(--silver);font-size:.92rem;line-height:1.85;font-weight:300;margin-bottom:22px;}
+.case-results{display:flex;gap:22px;}
+.cr-val{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--cyan);display:block;}
+.cr-lbl{font-size:.65rem;letter-spacing:2px;color:var(--silver);text-transform:uppercase;}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.testi-card{background:linear-gradient(160deg,rgba(26,58,107,.14),rgba(5,14,28,.92));border:1px solid rgba(77,159,255,.09);padding:34px 28px;transition:all .4s;}
+.testi-card:hover{border-color:rgba(77,159,255,.26);transform:translateY(-4px);}
+.testi-quote-mark{font-family:'Cinzel',serif;font-size:3rem;color:rgba(30,111,255,.13);line-height:.8;margin-bottom:14px;display:block;}
+.testi-text{color:var(--silver);font-size:.98rem;line-height:1.9;font-style:italic;font-weight:300;margin-bottom:24px;}
+.testi-sep{width:28px;height:1px;background:linear-gradient(to right,var(--blue),transparent);margin-bottom:18px;}
+.testi-name{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;color:var(--light);letter-spacing:1px;}
+.testi-role-tag{font-size:.7rem;color:rgba(192,207,224,.45);letter-spacing:1px;margin-top:4px;}
+.star{color:var(--cyan);font-size:.78rem;}
+.testi-stars{display:flex;gap:3px;margin-bottom:14px;}
+.testi-placeholder{text-align:center;padding:70px 40px;border:1px dashed rgba(77,159,255,.12);grid-column:1/-1;}
+.testi-placeholder p{color:rgba(192,207,224,.35);font-size:.88rem;letter-spacing:1px;font-weight:300;}
+.testi-placeholder span{color:var(--glow);font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:3px;display:block;margin-top:8px;}
+
+/* CONTACT */
+.contact-layout{display:grid;grid-template-columns:1fr 1.25fr;gap:70px;align-items:start;}
+.contact-info h3{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;background:linear-gradient(135deg,var(--white),var(--light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:14px;}
+.contact-info p{color:var(--silver);font-size:.98rem;line-height:1.9;font-weight:300;margin-bottom:34px;}
+.contact-channels{display:flex;flex-direction:column;gap:14px;margin-bottom:38px;}
+.contact-ch{display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(26,58,107,.14);border:1px solid rgba(77,159,255,.09);transition:all .3s;}
+.contact-ch:hover{border-color:rgba(77,159,255,.28);background:rgba(30,111,255,.06);}
+.ch-icon{font-size:1.25rem;width:30px;text-align:center;}
+.ch-label{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:3px;color:var(--glow);text-transform:uppercase;display:block;}
+.ch-val{color:var(--white);font-size:.92rem;text-decoration:none;transition:color .3s;display:block;margin-top:3px;}
+.ch-val:hover{color:var(--cyan);}
+.lead-form{background:linear-gradient(135deg,rgba(13,31,60,.6),rgba(5,14,28,.96));border:1px solid rgba(77,159,255,.13);padding:42px;position:relative;overflow:hidden;}
+.lead-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--blue),var(--cyan),var(--blue),transparent);}
+.lead-form h3{font-family:'Cinzel',serif;font-size:1.25rem;font-weight:700;color:var(--white);margin-bottom:7px;letter-spacing:1px;}
+.f-sub{font-size:.82rem;color:var(--silver);margin-bottom:28px;font-weight:300;line-height:1.6;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.f-group{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.f-group label{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:3px;color:var(--glow);text-transform:uppercase;}
+.f-group input,.f-group select,.f-group textarea{background:rgba(10,22,40,.8);border:1px solid rgba(77,159,255,.18);color:var(--white);padding:11px 15px;font-size:.88rem;font-family:'Cormorant Garamond',serif;outline:none;transition:border .3s;width:100%;}
+.f-group input::placeholder,.f-group textarea::placeholder{color:rgba(192,207,224,.28);}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:rgba(77,159,255,.48);}
+.f-group select{cursor:pointer;}
+.f-group select option{background:#0a1628;}
+.f-group textarea{resize:vertical;min-height:95px;}
+.f-submit{width:100%;padding:14px;background:linear-gradient(135deg,var(--blue),var(--glow));color:#fff;border:none;font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:3px;cursor:pointer;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:all .3s;box-shadow:0 0 22px rgba(30,111,255,.32);margin-top:7px;text-transform:uppercase;}
+.f-submit:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(30,111,255,.55);}
+.f-success{display:none;text-align:center;padding:40px 16px;}
+.f-success .check{font-size:2.2rem;margin-bottom:14px;color:var(--cyan);}
+.f-success h4{font-family:'Cinzel',serif;font-size:1.15rem;color:var(--cyan);margin-bottom:9px;letter-spacing:1px;}
+.f-success p{color:var(--silver);font-weight:300;font-size:.92rem;line-height:1.7;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;padding:38px 80px;border-top:1px solid rgba(30,111,255,.06);display:flex;align-items:center;justify-content:space-between;}
+.footer-brand{font-family:'Cinzel',serif;font-size:.82rem;font-weight:700;letter-spacing:3px;background:linear-gradient(135deg,var(--glow),var(--silver));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.footer-copy{color:rgba(192,207,224,.28);font-size:.7rem;letter-spacing:2px;}
+.footer-links{display:flex;gap:22px;}
+.footer-links a{color:rgba(192,207,224,.28);text-decoration:none;font-size:.68rem;letter-spacing:2px;font-family:'Cinzel',serif;transition:color .3s;}
+.footer-links a:hover{color:var(--glow);}
+
+/* ANIMS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}.rd4{transition-delay:.4s;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  #hero-section{grid-template-columns:1fr;padding:120px 40px 60px;}
+  .hero-right{display:none;}
+  .sec{padding:80px 40px;}
+  .srv-grid{grid-template-columns:repeat(2,1fr);}
+  .meth-grid{grid-template-columns:repeat(2,1fr);}
+  .founder-grid{grid-template-columns:1fr;}
+  .cases-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .contact-layout{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:14px;text-align:center;}
+}
+@media(max-width:640px){
+  nav{padding:14px 18px;}
+  .nav-links{display:none;}
+  .sec{padding:60px 18px;}
+  .srv-grid{grid-template-columns:1fr;}
+  .meth-grid{grid-template-columns:1fr;}
+  .hero-metrics{flex-wrap:wrap;gap:22px;}
+  .f-row{grid-template-columns:1fr;}
+  footer{padding:28px 18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-scan"></div>
+  <canvas id="intro-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+  <div class="intro-center">
+    <div class="intro-rings-wrap">
+      <div class="i-ring"></div><div class="i-ring"></div><div class="i-ring"></div><div class="i-ring"></div>
+      <img src="/mnt/user-data/uploads/1000150773.png" class="intro-logo-img" alt="Blue Pyramid">
+    </div>
+    <div class="intro-brand-text">BLUE PYRAMID</div>
+    <div class="intro-sub-text">Strategic &amp; Financial Consulting</div>
+    <div class="intro-bar-wrap"><div class="intro-bar"></div></div>
+  </div>
+</div>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="/mnt/user-data/uploads/1000150773.png" alt="Blue Pyramid">
+    <span class="nav-brand-name">BLUE PYRAMID</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">خدمات</a></li>
+    <li><a href="#methodology">متدولوژی</a></li>
+    <li><a href="#founder">فاندر</a></li>
+    <li><a href="#cases">نمونه‌کار</a></li>
+    <li><a href="#testimonials">نظرات</a></li>
+    <li><a href="#contact" class="nav-cta">مشاوره رایگان</a></li>
+    <li><a href="#" class="nav-lang" onclick="toggleLang(event)">EN</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero-section">
+  <div>
+    <div class="hero-eyebrow">Strategic &amp; Financial Consulting</div>
+    <h1 class="hero-h1">
+      <span class="line1">BLUE PYRAMID</span>
+      <span class="line2">تصمیم بهتر. رشد پایدار.</span>
+    </h1>
+    <p class="hero-desc">ما <strong>استراتژی‌های سازمانی</strong> و <strong>راهکارهای مالی</strong> طراحی می‌کنیم که نه فقط روی کاغذ جواب می‌دهند — بلکه در بازار واقعی کار می‌کنند.</p>
+    <div class="hero-metrics">
+      <div><span class="metric-val">۸+</span><span class="metric-lbl">سال تجربه</span></div>
+      <div><span class="metric-val">۴</span><span class="metric-lbl">صنعت هدف</span></div>
+      <div><span class="metric-val">2in1</span><span class="metric-lbl">استراتژی + مالی</span></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-p">شروع مشاوره</a>
+      <a href="#cases" class="btn-o">نمونه‌کارها</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-orbit h-o1"><div class="h-dot"></div></div>
+      <div class="hero-orbit h-o2"><div class="h-dot2"></div></div>
+      <div class="hero-orbit h-o3"></div>
+      <img src="/mnt/user-data/uploads/1000150773.png" class="hero-logo-main" alt="Blue Pyramid">
+    </div>
+  </div>
+  <div class="hero-scroll-ind">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<div class="glow-sep"></div>
+
+<!-- SERVICES -->
+<section id="services" class="sec">
+  <div class="sec-eyebrow reveal">What We Do</div>
+  <h2 class="sec-title reveal">خدمات ما</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="srv-grid">
+    <div class="srv-card reveal rd1"><span class="srv-n">01</span><span class="srv-icon">◈</span><h3>مشاوره استراتژیک</h3><p>تدوین استراتژی رقابتی، تحلیل محیط کسب‌وکار، طراحی مدل درآمدی و مدیریت تحول سازمانی با رویکرد داده‌محور.</p><div class="srv-tags"><span class="srv-tag">SWOT</span><span class="srv-tag">BCG</span><span class="srv-tag">PESTEL</span></div></div>
+    <div class="srv-card reveal rd2"><span class="srv-n">02</span><span class="srv-icon">◇</span><h3>مشاوره مالی</h3><p>ارزیابی مالی سازمان، مدل‌سازی مالی، برنامه‌ریزی سرمایه‌گذاری و بهینه‌سازی ساختار سرمایه شرکت.</p><div class="srv-tags"><span class="srv-tag">Valuation</span><span class="srv-tag">DCF</span><span class="srv-tag">M&amp;A</span></div></div>
+    <div class="srv-card reveal rd3"><span class="srv-n">03</span><span class="srv-icon">△</span><h3>مدیریت عملکرد</h3><p>طراحی سیستم KPI و OKR، پیاده‌سازی داشبوردهای مدیریتی و ایجاد چارچوب ارزیابی عملکرد.</p><div class="srv-tags"><span class="srv-tag">KPI</span><span class="srv-tag">OKR</span><span class="srv-tag">BSC</span></div></div>
+    <div class="srv-card reveal rd1"><span class="srv-n">04</span><span class="srv-icon">⬡</span><h3>جذب سرمایه</h3><p>آماده‌سازی برای سرمایه‌گذاری، تهیه پیچ‌دک حرفه‌ای، ارزیابی کسب‌وکار و همراهی در مذاکرات سرمایه‌گذاری.</p><div class="srv-tags"><span class="srv-tag">Pitch Deck</span><span class="srv-tag">Due Diligence</span></div></div>
+    <div class="srv-card reveal rd2"><span class="srv-n">05</span><span class="srv-icon">◎</span><h3>ورود به بازار</h3><p>تحقیق بازار، تحلیل رقبا، استراتژی Go-to-Market و طراحی مسیر توسعه برای بازارهای جدید.</p><div class="srv-tags"><span class="srv-tag">GTM</span><span class="srv-tag">Market Research</span></div></div>
+    <div class="srv-card reveal rd3"><span class="srv-n">06</span><span class="srv-icon">✦</span><h3>برنامه‌ریزی کسب‌وکار</h3><p>تهیه بیزینس پلن جامع، مدل‌سازی سناریو، برنامه‌ریزی اجرایی و تعریف مایلستون‌های رشد.</p><div class="srv-tags"><span class="srv-tag">Business Plan</span><span class="srv-tag">Scenario</span></div></div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- METHODOLOGY -->
+<section id="methodology" class="sec">
+  <div class="sec-eyebrow reveal">How We Work</div>
+  <h2 class="sec-title reveal">متدولوژی ما</h2>
+  <div class="sec-rule reveal"></div>
+  <p class="reveal" style="color:var(--silver);font-size:1rem;line-height:1.9;max-width:640px;margin-bottom:50px;font-weight:300;">چارچوب چهار مرحله‌ای Blue Pyramid بر پایه تجربه عملی در صنایع متنوع — از تشخیص دقیق مسئله تا پایش مستمر نتایج.</p>
+  <div class="meth-grid">
+    <div class="meth-step reveal rd1"><div class="meth-n">01</div><div class="meth-icon-wrap"><span class="meth-icon">🔍</span></div><h3>Diagnosis</h3><p>تشخیص دقیق وضعیت فعلی، شناسایی بیماری‌های استراتژیک و مالی، تعریف صحیح مسئله قبل از هر راه‌حلی.</p><div class="meth-arrow">›</div></div>
+    <div class="meth-step reveal rd2"><div class="meth-n">02</div><div class="meth-icon-wrap"><span class="meth-icon">🎯</span></div><h3>Strategy</h3><p>طراحی استراتژی اختصاصی بر اساس داده‌های واقعی، ارزیابی گزینه‌ها و انتخاب مسیر بهینه برای دستیابی به اهداف.</p><div class="meth-arrow">›</div></div>
+    <div class="meth-step reveal rd3"><div class="meth-n">03</div><div class="meth-icon-wrap"><span class="meth-icon">⚙️</span></div><h3>Execution</h3><p>همراهی در مرحله اجرا، مدیریت تغییر، هماهنگی با تیم‌های داخلی و رفع موانع عملیاتی در مسیر پیاده‌سازی.</p><div class="meth-arrow">›</div></div>
+    <div class="meth-step reveal rd4"><div class="meth-n">04</div><div class="meth-icon-wrap"><span class="meth-icon">📊</span></div><h3>Monitor</h3><p>پایش مستمر نتایج از طریق KPIهای تعریف‌شده، بازبینی دوره‌ای و بهینه‌سازی مسیر بر اساس واقعیت بازار.</p></div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- ABOUT FOUNDER -->
+<section id="founder" class="sec">
+  <div class="sec-eyebrow reveal">About The Founder</div>
+  <h2 class="sec-title reveal">فاندر</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="founder-grid">
+    <div class="reveal">
+      <div class="founder-photo-frame">
+        <div class="founder-corner fc-tl"></div><div class="founder-corner fc-tr"></div><div class="founder-corner fc-bl"></div><div class="founder-corner fc-br"></div>
+        <div class="founder-initials">MT</div>
+        <div class="founder-badge"><span class="founder-badge-title">Blue Pyramid</span><span class="founder-badge-sub">Founder &amp; Lead Consultant</span></div>
+      </div>
+    </div>
+    <div class="reveal rd2">
+      <div class="founder-name">محمد تقی آغدیر</div>
+      <div class="founder-title-role">مشاور ارشد استراتژی و مالی</div>
+      <p class="founder-bio">با بیش از <strong>۸ سال تجربه</strong> در حوزه مشاوره استراتژیک و مالی، محمد تقی آغدیر به سازمان‌ها کمک می‌کند تا در محیط‌های پیچیده و رقابتی، <strong>تصمیمات هوشمندانه‌تر</strong> بگیرند و مسیر رشد پایدار را طراحی کنند.<br><br>تخصص ترکیبی در <strong>استراتژی سازمانی</strong> و <strong>مشاوره مالی</strong>، رویکردی یکپارچه‌تر و کامل‌تر نسبت به مشاوران تک‌تخصصه ایجاد می‌کند. از تحلیل رقابتی و طراحی مدل کسب‌وکار تا ارزیابی مالی و همراهی در جذب سرمایه.</p>
+      <div class="founder-skills">
+        <div class="f-skill"><div class="f-skill-dot"></div><span class="f-skill-text">استراتژی رقابتی و سازمانی</span></div>
+        <div class="f-skill"><div class="f-skill-dot"></div><span class="f-skill-text">مدل‌سازی و تحلیل مالی</span></div>
+        <div class="f-skill"><div class="f-skill-dot"></div><span class="f-skill-text">طراحی KPI و داشبورد مدیریتی</span></div>
+        <div class="f-skill"><div class="f-skill-dot"></div><span class="f-skill-text">جذب سرمایه و ارزیابی کسب‌وکار</span></div>
+        <div class="f-skill"><div class="f-skill-dot"></div><span class="f-skill-text">مدیریت ریسک سازمانی</span></div>
+        <div class="f-skill"><div class="f-skill-dot"></div><span class="f-skill-text">استراتژی ورود به بازار جدید</span></div>
+      </div>
+      <blockquote class="founder-quote">«بهترین استراتژی آن نیست که روی کاغذ زیباست — آن است که در بازار واقعی اجرا می‌شود.»</blockquote>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- CASE STUDIES -->
+<section id="cases" class="sec">
+  <div class="sec-eyebrow reveal">Our Work</div>
+  <h2 class="sec-title reveal">نمونه پروژه‌ها</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="cases-grid">
+    <div class="case-card reveal rd1">
+      <span class="case-tag">استارتاپ &amp; فناوری</span>
+      <div class="case-industry">Case Study — 01</div>
+      <h3>طراحی داشبورد استراتژیک برای پلتفرم فین‌تک</h3>
+      <p>طراحی و پیاده‌سازی سیستم جامع KPI با ۱۲۰+ شاخص عملکردی — از سطح مدیرعامل تا تیم‌های اجرایی.</p>
+      <div class="case-results"><div><span class="cr-val">۳۵٪</span><span class="cr-lbl">بهبود تصمیم‌گیری</span></div><div><span class="cr-val">۱۲۰+</span><span class="cr-lbl">شاخص طراحی‌شده</span></div></div>
+    </div>
+    <div class="case-card reveal rd2">
+      <span class="case-tag">خدمات مالی</span>
+      <div class="case-industry">Case Study — 02</div>
+      <h3>آماده‌سازی برای سرمایه‌گذاری در شرکت خدمات مالی</h3>
+      <p>ارزیابی کامل کسب‌وکار، مدل‌سازی مالی، تهیه پیچ‌دک و همراهی در مذاکرات با سرمایه‌گذاران نهادی.</p>
+      <div class="case-results"><div><span class="cr-val">2x</span><span class="cr-lbl">ارزش‌گذاری</span></div><div><span class="cr-val">۶ ماه</span><span class="cr-lbl">تا بستن دیل</span></div></div>
+    </div>
+    <div class="case-card reveal rd1">
+      <span class="case-tag">سلامت &amp; دارو</span>
+      <div class="case-industry">Case Study — 03</div>
+      <h3>استراتژی رقابتی برای توزیع‌کننده تجهیزات پزشکی</h3>
+      <p>تحلیل رقابتی عمیق، بازتعریف positioning و طراحی استراتژی توسعه کانال فروش در بازار رقابتی.</p>
+      <div class="case-results"><div><span class="cr-val">۴۰٪</span><span class="cr-lbl">رشد سهم بازار</span></div><div><span class="cr-val">۱۸ ماه</span><span class="cr-lbl">افق استراتژی</span></div></div>
+    </div>
+    <div class="case-card reveal rd2">
+      <span class="case-tag">استارتاپ</span>
+      <div class="case-industry">Case Study — 04</div>
+      <h3>استراتژی ورود به بازار برای استارتاپ SaaS</h3>
+      <p>تحقیق بازار هدف، تعریف ICP، طراحی GTM strategy و اولویت‌بندی کانال‌های رشد برای استارتاپ نرم‌افزاری.</p>
+      <div class="case-results"><div><span class="cr-val">۳</span><span class="cr-lbl">بازار هدف</span></div><div><span class="cr-val">6x</span><span class="cr-lbl">رشد پایپ‌لاین</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="sec">
+  <div class="sec-eyebrow reveal">Client Voices</div>
+  <h2 class="sec-title reveal">نظر مشتریان</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="testi-grid reveal">
+    <div class="testi-placeholder">
+      <p>نظرات مشتریان به‌زودی اضافه می‌شود</p>
+      <span>Client Testimonials Coming Soon</span>
+    </div>
+  </div>
+</section>
+
+<div class="glow-sep"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-eyebrow reveal">Get In Touch</div>
+  <h2 class="sec-title reveal">با ما در تماس باشید</h2>
+  <div class="sec-rule reveal"></div>
+  <div class="contact-layout">
+    <div class="contact-info reveal">
+      <h3>آماده رشد هستید؟</h3>
+      <p>برای دریافت مشاوره رایگان اولیه با Blue Pyramid تماس بگیرید. اولین جلسه تشخیصی ۴۵ دقیقه‌ای رایگان است.</p>
+      <div class="contact-channels">
+        <div class="contact-ch"><span class="ch-icon">📱</span><div><span class="ch-label">تلفن مستقیم</span><a href="tel:+989207413175" class="ch-val">۰۹۲۰۷۴۱۳۱۷۵</a></div></div>
+        <div class="contact-ch"><span class="ch-icon">✉️</span><div><span class="ch-label">ایمیل</span><a href="mailto:info@bluepyramid.ir" class="ch-val">info@bluepyramid.ir</a></div></div>
+        <div class="contact-ch"><span class="ch-icon">📍</span><div><span class="ch-label">موقعیت</span><span class="ch-val">تهران، ایران</span></div></div>
+      </div>
+    </div>
+    <div class="lead-form reveal rd2">
+      <h3>ثبت درخواست مشاوره</h3>
+      <p class="f-sub">فرم را پر کنید — ظرف ۲۴ ساعت با شما تماس می‌گیریم.</p>
+      <div id="form-body">
+        <div class="f-row">
+          <div class="f-group"><label>نام و نام‌خانوادگی *</label><input type="text" id="f-name" placeholder="نام شما"></div>
+          <div class="f-group"><label>شماره تماس *</label><input type="tel" id="f-phone" placeholder="۰۹۱۲..."></div>
+        </div>
+        <div class="f-group"><label>ایمیل</label><input type="email" id="f-email" placeholder="email@company.ir"></div>
+        <div class="f-row">
+          <div class="f-group"><label>نام شرکت</label><input type="text" id="f-company" placeholder="نام شرکت"></div>
+          <div class="f-group"><label>حوزه کسب‌وکار</label><select id="f-industry"><option value="">انتخاب کنید</option><option>استارتاپ و فناوری</option><option>خدمات مالی</option><option>سلامت و دارو</option><option>تولید و صنعت</option><option>سایر</option></select></div>
+        </div>
+        <div class="f-group"><label>نوع خدمت مورد نیاز</label><select id="f-service"><option value="">انتخاب کنید</option><option>مشاوره استراتژیک</option><option>مشاوره مالی</option><option>طراحی KPI و داشبورد</option><option>جذب سرمایه</option><option>ورود به بازار جدید</option><option>برنامه‌ریزی کسب‌وکار</option><option>مطمئن نیستم</option></select></div>
+        <div class="f-group"><label>توضیح چالش شما</label><textarea id="f-msg" placeholder="چالش اصلی یا هدفی که دنبال می‌کنید را بنویسید..."></textarea></div>
+        <button class="f-submit" onclick="submitForm()">ارسال درخواست مشاوره ◈</button>
+      </div>
+      <div class="f-success" id="form-success">
+        <div class="check">✦</div>
+        <h4>درخواست شما ثبت شد</h4>
+        <p>ظرف ۲۴ ساعت با شما تماس خواهیم گرفت.<br>ممنون از اعتماد شما به Blue Pyramid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">BLUE PYRAMID</div>
+  <div class="footer-copy">© ۱۴۰۴ — تمامی حقوق محفوظ است</div>
+  <div class="footer-links"><a href="#services">خدمات</a><a href="#founder">فاندر</a><a href="#contact">تماس</a></div>
+</footer>
+
+<script>
+// INTRO
+const intro=document.getElementById('intro');
+const ic=document.getElementById('intro-canvas');
+ic.width=window.innerWidth;ic.height=window.innerHeight;
+const ictx=ic.getContext('2d');
+const ipts=Array.from({length:55},()=>({x:Math.random()*ic.width,y:Math.random()*ic.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.2+.3,o:Math.random()*.4+.1}));
+let introGone=false;
+function drawIntro(){
+  ictx.clearRect(0,0,ic.width,ic.height);
+  ipts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=ic.width;if(p.x>ic.width)p.x=0;
+    if(p.y<0)p.y=ic.height;if(p.y>ic.height)p.y=0;
+    ictx.beginPath();ictx.arc(p.x,p.y,p.s,0,Math.PI*2);
+    ictx.fillStyle='rgba(77,159,255,'+p.o+')';ictx.fill();
+  });
+  if(!introGone)requestAnimationFrame(drawIntro);
+}
+drawIntro();
+setTimeout(()=>{intro.classList.add('exit');setTimeout(()=>{intro.style.display='none';introGone=true;},950);},3100);
+
+// BG CANVAS
+const canvas=document.getElementById('bg-canvas');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+const pts=Array.from({length:90},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,s:Math.random()*1.4+.3,o:Math.random()*.42+.08,p:Math.random()*Math.PI*2}));
+let mx=-1000,my=-1000;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const g=ctx.createRadialGradient(canvas.width/2,canvas.height/2,0,canvas.width/2,canvas.height/2,canvas.width*.85);
+  g.addColorStop(0,'rgba(13,31,60,.22)');g.addColorStop(1,'rgba(5,14,28,0)');
+  ctx.fillStyle=g;ctx.fillRect(0,0,canvas.width,canvas.height);
+  pts.forEach((p,i)=>{
+    p.x+=p.vx;p.y+=p.vy;p.p+=.015;
+    if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;
+    if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;
+    const dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<110){p.x+=(dx/d)*1.5;p.y+=(dy/d)*1.5;}
+    const op=p.o*(0.7+0.3*Math.sin(p.p));
+    ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
+    ctx.fillStyle='rgba(77,159,255,'+op+')';ctx.fill();
+    for(let j=i+1;j<pts.length;j++){
+      const q=pts[j],ex=p.x-q.x,ey=p.y-q.y,ed=Math.sqrt(ex*ex+ey*ey);
+      if(ed<130){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(30,111,255,'+(0.07*(1-ed/130))+')';ctx.lineWidth=.5;ctx.stroke();}
+    }
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+// REVEAL
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*65);});
+},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+// FORM
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  if(!name||!phone){alert('لطفاً نام و شماره تماس را وارد کنید.');return;}
+  document.getElementById('form-body').style.display='none';
+  document.getElementById('form-success').style.display='block';
+}
+
+// LANG TOGGLE
+let isEn=false;
+function toggleLang(e){
+  e.preventDefault();
+  isEn=!isEn;
+  document.documentElement.setAttribute('lang',isEn?'en':'fa');
+  document.documentElement.setAttribute('dir',isEn?'ltr':'rtl');
+  e.target.textContent=isEn?'FA':'EN';
+}
+</script>
+</body>
+</html>
