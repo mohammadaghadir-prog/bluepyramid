@@ -444,25 +444,28 @@ footer{position:relative;z-index:1;padding:38px 80px;border-top:1px solid rgba(3
     <div class="lead-form reveal rd2">
       <h3>ثبت درخواست مشاوره</h3>
       <p class="f-sub">فرم را پر کنید — ظرف ۲۴ ساعت با شما تماس می‌گیریم.</p>
-      <div id="form-body">
-        <div class="f-row">
-          <div class="f-group"><label>نام و نام‌خانوادگی *</label><input type="text" id="f-name" placeholder="نام شما"></div>
-          <div class="f-group"><label>شماره تماس *</label><input type="tel" id="f-phone" placeholder="۰۹۱۲..."></div>
+      <div data-fs-success style="display:none">
+        <div class="f-success">
+          <div class="check">✦</div>
+          <h4>درخواست شما ثبت شد</h4>
+          <p>ظرف ۲۴ ساعت با شما تماس خواهیم گرفت.<br>ممنون از اعتماد شما به Blue Pyramid.</p>
         </div>
-        <div class="f-group"><label>ایمیل</label><input type="email" id="f-email" placeholder="email@company.ir"></div>
+      </div>
+      <div data-fs-error style="display:none;color:#ff6b6b;margin-bottom:12px;font-size:.8rem;text-align:center"></div>
+      <form id="lead-form">
         <div class="f-row">
-          <div class="f-group"><label>نام شرکت</label><input type="text" id="f-company" placeholder="نام شرکت"></div>
-          <div class="f-group"><label>حوزه کسب‌وکار</label><select id="f-industry"><option value="">انتخاب کنید</option><option>استارتاپ و فناوری</option><option>خدمات مالی</option><option>سلامت و دارو</option><option>تولید و صنعت</option><option>سایر</option></select></div>
+          <div class="f-group"><label>نام و نام‌خانوادگی *</label><input type="text" name="name" data-fs-field placeholder="نام شما" required></div>
+          <div class="f-group"><label>شماره تماس *</label><input type="tel" name="phone" data-fs-field placeholder="۰۹۱۲..." required></div>
         </div>
-        <div class="f-group"><label>نوع خدمت مورد نیاز</label><select id="f-service"><option value="">انتخاب کنید</option><option>مشاوره استراتژیک</option><option>مشاوره مالی</option><option>طراحی KPI و داشبورد</option><option>جذب سرمایه</option><option>ورود به بازار جدید</option><option>برنامه‌ریزی کسب‌وکار</option><option>مطمئن نیستم</option></select></div>
-        <div class="f-group"><label>توضیح چالش شما</label><textarea id="f-msg" placeholder="چالش اصلی یا هدفی که دنبال می‌کنید را بنویسید..."></textarea></div>
-        <button class="f-submit" onclick="submitForm()">ارسال درخواست مشاوره ◈</button>
-      </div>
-      <div class="f-success" id="form-success">
-        <div class="check">✦</div>
-        <h4>درخواست شما ثبت شد</h4>
-        <p>ظرف ۲۴ ساعت با شما تماس خواهیم گرفت.<br>ممنون از اعتماد شما به Blue Pyramid.</p>
-      </div>
+        <div class="f-group"><label>ایمیل</label><input type="email" name="email" data-fs-field placeholder="email@company.ir"></div>
+        <div class="f-row">
+          <div class="f-group"><label>نام شرکت</label><input type="text" name="company" placeholder="نام شرکت"></div>
+          <div class="f-group"><label>حوزه کسب‌وکار</label><select name="industry"><option value="">انتخاب کنید</option><option>استارتاپ و فناوری</option><option>خدمات مالی</option><option>سلامت و دارو</option><option>تولید و صنعت</option><option>سایر</option></select></div>
+        </div>
+        <div class="f-group"><label>نوع خدمت مورد نیاز</label><select name="service"><option value="">انتخاب کنید</option><option>مشاوره استراتژیک</option><option>مشاوره مالی</option><option>طراحی KPI و داشبورد</option><option>جذب سرمایه</option><option>ورود به بازار جدید</option><option>برنامه‌ریزی کسب‌وکار</option><option>مطمئن نیستم</option></select></div>
+        <div class="f-group"><label>توضیح چالش شما</label><textarea name="message" data-fs-field placeholder="چالش اصلی یا هدفی که دنبال می‌کنید را بنویسید..."></textarea></div>
+        <button class="f-submit" type="submit" data-fs-submit-btn>ارسال درخواست مشاوره ◈</button>
+      </form>
     </div>
   </div>
 </section>
@@ -542,13 +545,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
 // FORM
-function submitForm(){
-  const name=document.getElementById('f-name').value.trim();
-  const phone=document.getElementById('f-phone').value.trim();
-  if(!name||!phone){alert('لطفاً نام و شماره تماس را وارد کنید.');return;}
-  document.getElementById('form-body').style.display='none';
-  document.getElementById('form-success').style.display='block';
-}
+window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+formspree('initForm', { formElement: '#lead-form', formId: 'xzdqqbqr' });
 
 // LANG TOGGLE
 let isEn=false;
@@ -560,5 +558,6 @@ function toggleLang(e){
   e.target.textContent=isEn?'FA':'EN';
 }
 </script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
