@@ -235,6 +235,54 @@ footer{position:relative;z-index:1;padding:38px 80px;border-top:1px solid rgba(3
   .f-row{grid-template-columns:1fr;}
   footer{padding:28px 18px;}
 }
+
+[lang="fa"] * {
+  font-family: 'Vazirmatn', 'Cormorant Garamond', Georgia, serif;
+}
+
+[lang="fa"] .intro-brand-text,
+[lang="fa"] .nav-brand-name,
+[lang="fa"] .nav-links a,
+[lang="fa"] .hero-eyebrow,
+[lang="fa"] .hero-h1,
+[lang="fa"] .btn-p,
+[lang="fa"] .btn-o,
+[lang="fa"] .sec-eyebrow,
+[lang="fa"] .sec-title,
+[lang="fa"] .metric-val {
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+[lang="en"] * {
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+}
+
+[lang="en"] .intro-brand-text,
+[lang="en"] .nav-brand-name,
+[lang="en"] .nav-links a,
+[lang="en"] .hero-eyebrow,
+[lang="en"] .hero-h1,
+[lang="en"] .btn-p,
+[lang="en"] .btn-o {
+  font-family: 'Cinzel', serif;
+}
+
+/* Form inputs RTL/LTR */
+[lang="fa"] input,
+[lang="fa"] textarea,
+[lang="fa"] select {
+  font-family: 'Vazirmatn', sans-serif;
+  text-align: right;
+}
+
+[lang="en"] input,
+[lang="en"] textarea,
+[lang="en"] select {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  text-align: left;
+}
 </style>
 
 <script>
@@ -480,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
   <div class="hero-scroll-ind">
-    <span>SCROLL</span>
+    <span data-i18n="scrollText">SCROLL</span>
     <div class="scroll-line"></div>
   </div>
 </div>
@@ -534,8 +582,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
     <div class="reveal rd2">
-      <div class="founder-name">محمد تقی آغدیر</div>
-      <div class="founder-title-role">مشاور ارشد استراتژی و مالی</div>
+      <div class="founder-name" data-i18n="founderName">محمد تقی آغدیر</div>
+      <div class="founder-title-role" data-i18n="founderRole">بنیانگذار و مشاور استراتژی</div>
       <p class="founder-bio">با بیش از <strong>۸ سال تجربه</strong> در حوزه مشاوره استراتژیک و مالی، محمد تقی آغدیر به سازمان‌ها کمک می‌کند تا در محیط‌های پیچیده و رقابتی، <strong>تصمیمات هوشمندانه‌تر</strong> بگیرند و مسیر رشد پایدار را طراحی کنند.<br><br>تخصص ترکیبی در <strong>استراتژی سازمانی</strong> و <strong>مشاوره مالی</strong>، رویکردی یکپارچه‌تر و کامل‌تر نسبت به مشاوران تک‌تخصصه ایجاد می‌کند. از تحلیل رقابتی و طراحی مدل کسب‌وکار تا ارزیابی مالی و همراهی در جذب سرمایه.</p>
       <div class="founder-skills">
         <div class="f-skill"><div class="f-skill-dot"></div><span class="f-skill-text">استراتژی رقابتی و سازمانی</span></div>
@@ -616,14 +664,14 @@ document.addEventListener('DOMContentLoaded', () => {
       <h3>آماده رشد هستید؟</h3>
       <p data-i18n="contactDesc">برای دریافت مشاوره رایگان اولیه با Blue Pyramid تماس بگیرید. اولین جلسه تشخیصی ۴۵ دقیقه‌ای رایگان است.</p>
       <div class="contact-channels">
-        <div class="contact-ch"><span class="ch-icon">📱</span><div><span class="ch-label">تلفن مستقیم</span><a href="tel:+989207413175" class="ch-val">۰۹۲۰۷۴۱۳۱۷۵</a></div></div>
-        <div class="contact-ch"><span class="ch-icon">✉️</span><div><span class="ch-label">ایمیل</span><a href="mailto:bluepyramid.info@gmail.com" class="ch-val">bluepyramid.info@gmail.com</a></div></div>
-        <div class="contact-ch"><span class="ch-icon">📍</span><div><span class="ch-label">موقعیت</span><span class="ch-val">تهران، ایران</span></div></div>
+        <div class="contact-ch"><span class="ch-icon">📱</span><div><span class="ch-label" data-i18n="contactPhoneLabel">تلفن مستقیم</span><a href="tel:+989207413175" class="ch-val">۰۹۲۰۷۴۱۳۱۷۵</a></div></div>
+        <div class="contact-ch"><span class="ch-icon">✉️</span><div><span class="ch-label" data-i18n="contactEmailLabel">ایمیل</span><a href="mailto:bluepyramid.info@gmail.com" class="ch-val">bluepyramid.info@gmail.com</a></div></div>
+        <div class="contact-ch"><span class="ch-icon">📍</span><div><span class="ch-label" data-i18n="contactLocationLabel">موقعیت</span><span class="ch-val">تهران، ایران</span></div></div>
       </div>
     </div>
     <div class="lead-form reveal rd2">
-      <h3>ثبت درخواست مشاوره</h3>
-      <p class="f-sub">فرم را پر کنید — ظرف ۲۴ ساعت با شما تماس می‌گیریم.</p>
+      <h3 data-i18n="formTitle">ثبت درخواست مشاوره</h3>
+      <p class="f-sub" data-i18n="formSubtitle">فرم را پر کنید — ظرف ۲۴ ساعت با شما تماس می‌گیریم.</p>
       <div data-fs-success style="display:none">
         <div class="f-success">
           <div class="check">✦</div>
