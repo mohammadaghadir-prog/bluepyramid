@@ -458,6 +458,10 @@ function toggleLanguage() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setLanguage(currentLang);
+  const toggle = document.getElementById('lang-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', toggleLanguage);
+  }
 });
 </script>
 </head>
@@ -487,7 +491,6 @@ document.addEventListener('DOMContentLoaded', () => {
     <span class="nav-brand-name">BLUE PYRAMID</span>
   </a>
   <button id="lang-toggle" style="background:transparent;border:1px solid rgba(77,159,255,.45);color:var(--glow);padding:6px 12px;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:2px;cursor:pointer;border-radius:2px;transition:all .3s;margin-left:auto;">EN</button>
-  <script>document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);</script>
   <ul class="nav-links">
     <li><a href="#services" data-i18n="navServices">خدمات</a></li>
     <li><a href="#methodology" data-i18n="navMethodology">متدولوژی</a></li>
