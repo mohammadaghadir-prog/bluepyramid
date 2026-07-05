@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>درباره ما - هرم آبی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Vazirmatn:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --deep: #050d1a;
+      --dark: #0a1628;
+      --blue: #1e6fff;
+      --cyan: #4da6ff;
+      --glow: #4d9fff;
+      --light: #e8eef5;
+      --silver: #b8c5d6;
+      --white: #ffffff;
+    }
+
+    [lang="fa"] * {
+      font-family: 'Vazirmatn', 'Cormorant Garamond', Georgia, serif;
+    }
+
+    [lang="fa"] .nav-brand-name,
+    [lang="fa"] .nav-links a,
+    [lang="fa"] h1,
+    [lang="fa"] h2,
+    [lang="fa"] h3,
+    [lang="fa"] .section-eyebrow,
+    [lang="fa"] .btn-p,
+    [lang="fa"] .btn-o {
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 600;
+    }
+
+    [lang="en"] * {
+      font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+    }
+
+    body {
+      background: var(--deep);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: linear-gradient(135deg, rgba(10,22,40,.95), rgba(5,13,26,.98));
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(77,159,255,.15);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, var(--glow), var(--silver));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: var(--silver);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      padding: 8px 16px;
+      transition: color 0.3s;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--glow);
+    }
+
+    #lang-toggle {
+      background: transparent;
+      border: 1px solid rgba(77,159,255,0.45);
+      color: var(--glow);
+      padding: 6px 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+      margin-left: auto;
+    }
+
+    #lang-toggle:hover {
+      border-color: var(--glow);
+      box-shadow: 0 0 15px rgba(77,159,255,0.3);
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 6px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 3vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--white), var(--light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .content-section {
+      margin-bottom: 60px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.3s forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+    }
+
+    .founder-card {
+      background: linear-gradient(135deg, rgba(13,31,60,0.6), rgba(5,14,28,0.96));
+      border: 1px solid rgba(77,159,255,0.13);
+      padding: 42px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .founder-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--blue), var(--cyan), var(--blue), transparent);
+    }
+
+    .founder-initials {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--blue), var(--glow));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 20px;
+      box-shadow: 0 0 30px rgba(77,159,255,0.3);
+    }
+
+    .founder-info h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .founder-role {
+      color: var(--glow);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .founder-bio {
+      color: var(--silver);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .founder-bio strong {
+      color: var(--light);
+    }
+
+    .mission-vision {
+      background: linear-gradient(135deg, rgba(13,31,60,0.4), rgba(5,14,28,0.6));
+      border-left: 3px solid var(--blue);
+      padding: 32px;
+      border-radius: 4px;
+    }
+
+    .mission-vision h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--cyan);
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .mission-vision p {
+      color: var(--silver);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .mission-vision p:last-child {
+      margin-bottom: 0;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .value-card {
+      background: rgba(77,159,255,0.08);
+      border: 1px solid rgba(77,159,255,0.2);
+      padding: 24px;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .value-card:hover {
+      background: rgba(77,159,255,0.15);
+      border-color: rgba(77,159,255,0.4);
+      transform: translateY(-4px);
+    }
+
+    .value-card h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--glow);
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .value-card p {
+      color: var(--silver);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      color: var(--glow);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      border: 1px solid rgba(77,159,255,0.45);
+      border-radius: 4px;
+      transition: all 0.3s;
+      cursor: pointer;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    .btn-back:hover {
+      background: rgba(77,159,255,0.1);
+      box-shadow: 0 0 15px rgba(77,159,255,0.2);
+    }
+
+    footer {
+      background: linear-gradient(135deg, rgba(13,31,60,0.5), rgba(5,14,28,0.8));
+      border-top: 1px solid rgba(77,159,255,0.15);
+      padding: 40px;
+      text-align: center;
+      margin-top: 80px;
+      color: var(--silver);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        padding: 40px 20px;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand-name">BLUE PYRAMID</a>
+  <ul class="nav-links">
+    <li><a href="/#services" data-i18n="navServices">خدمات</a></li>
+    <li><a href="/#cases" data-i18n="navCases">نمونه‌کارها</a></li>
+    <li><a href="/#contact" data-i18n="navContact">تماس</a></li>
+  </ul>
+  <button id="lang-toggle">EN</button>
+</nav>
+
+<main>
+  <a href="/" class="btn-back">← <span data-i18n="backHome">بازگشت به خانه</span></a>
+
+  <section class="content-section">
+    <div class="section-eyebrow" data-i18n="aboutEyebrow">درباره Blue Pyramid</div>
+    <h1 data-i18n="aboutTitle">تاریخ، تیم و ارزش‌ها</h1>
+  </section>
+
+  <div class="content-grid">
+    <div class="founder-card">
+      <div class="founder-initials">MT</div>
+      <div class="founder-info">
+        <h3 data-i18n="founderName">محمد تقی آغدیر</h3>
+        <div class="founder-role" data-i18n="founderRole">بنیانگذار و مشاور استراتژی</div>
+        <p class="founder-bio">
+          <span data-i18n="founderBio">دارای MBA در زمینه Management Strategy از دانشگاه تهران و MSc در Biomedical Engineering از دانشگاه آزاد اسلامی. بیش از ۱۰ سال تجربه در مشاوره استراتژی، تحلیل مالی، طراحی KPI و مدل‌سازی کسب‌وکار برای استارتاپ‌ها و شرکات بزرگ.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="mission-vision">
+      <h3 data-i18n="missionTitle">مأموریت</h3>
+      <p data-i18n="missionText">هرم آبی سازمان‌ها، کارآفرینان و سرمایه‌گذاران ایرانی را در مسیر تصمیم‌گیری‌های آگاهانه و رشد پایدار همراهی می‌کند.</p>
+
+      <h3 data-i18n="visionTitle">چشم‌انداز</h3>
+      <p data-i18n="visionText">تا سال ۱۴۰۹، هرم آبی به‌عنوان یکی از معتبرترین آژانس‌های مشاوره استراتژیک کشور، مرجع ملی در فنتک و سالمت دیجیتال است.</p>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="section-eyebrow" data-i18n="valuesEyebrow">اصول و ارزش‌ها</div>
+    <h2 style="font-size: 2rem; color: var(--white); margin-bottom: 40px;" data-i18n="valuesTitle">اصول محوری ما</h2>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <h4 data-i18n="value1Title">صداقت و مسئولیت</h4>
+        <p data-i18n="value1Text">پاسخگویی کامل در برابر تعهدات و شفافیت در تمام سطوح تعامل.</p>
+      </div>
+      <div class="value-card">
+        <h4 data-i18n="value2Title">تعالی کیفیت</h4>
+        <p data-i18n="value2Text">ارائه تحلیل‌ها و راهکارهای دقیق، مستند و داده‌محور بدون کاهش استانداردها.</p>
+      </div>
+      <div class="value-card">
+        <h4 data-i18n="value3Title">نوآوری و تحلیل</h4>
+        <p data-i18n="value3Text">بهره‌گیری از ابزارهای نوین برای راهکارهای خالقانه متناسب با بازار ایران.</p>
+      </div>
+      <div class="value-card">
+        <h4 data-i18n="value4Title">اخلاق تجاری</h4>
+        <p data-i18n="value4Text">رعایت اصول اخلاق حرفه‌ای و تالش برای اثرگذاری مثبت بر اکوسیستم کسب‌وکار.</p>
+      </div>
+      <div class="value-card">
+        <h4 data-i18n="value5Title">همکاری بلندمدت</h4>
+        <p data-i18n="value5Text">رابطه مشارکتی پایدار — موفقیت مشتری، موفقیت ما است.</p>
+      </div>
+      <div class="value-card">
+        <h4 data-i18n="value6Title">چابکی و پاسخگویی</h4>
+        <p data-i18n="value6Text">انطباق سریع با تغییرات و ارائه پاسخ مؤثر در هر مرحله.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-copy" data-i18n="footerCopy">© ۱۴۰۴ — تمامی حقوق محفوظ است</div>
+</footer>
+
+<script>
+window.translations = {
+  fa: {
+    navServices: 'خدمات',
+    navCases: 'نمونه‌کارها',
+    navContact: 'تماس',
+    backHome: 'بازگشت به خانه',
+    aboutEyebrow: 'درباره Blue Pyramid',
+    aboutTitle: 'تاریخ، تیم و ارزش‌ها',
+    founderName: 'محمد تقی آغدیر',
+    founderRole: 'بنیانگذار و مشاور استراتژی',
+    founderBio: 'دارای MBA در زمینه Management Strategy از دانشگاه تهران و MSc در Biomedical Engineering از دانشگاه آزاد اسلامی. بیش از ۱۰ سال تجربه در مشاوره استراتژی، تحلیل مالی، طراحی KPI و مدل‌سازی کسب‌وکار برای استارتاپ‌ها و شرکات بزرگ.',
+    missionTitle: 'مأموریت',
+    missionText: 'هرم آبی سازمان‌ها، کارآفرینان و سرمایه‌گذاران ایرانی را در مسیر تصمیم‌گیری‌های آگاهانه و رشد پایدار همراهی می‌کند.',
+    visionTitle: 'چشم‌انداز',
+    visionText: 'تا سال ۱۴۰۹، هرم آبی به‌عنوان یکی از معتبرترین آژانس‌های مشاوره استراتژیک کشور، مرجع ملی در فنتک و سالمت دیجیتال است.',
+    valuesEyebrow: 'اصول و ارزش‌ها',
+    valuesTitle: 'اصول محوری ما',
+    value1Title: 'صداقت و مسئولیت',
+    value1Text: 'پاسخگویی کامل در برابر تعهدات و شفافیت در تمام سطوح تعامل.',
+    value2Title: 'تعالی کیفیت',
+    value2Text: 'ارائه تحلیل‌ها و راهکارهای دقیق، مستند و داده‌محور بدون کاهش استانداردها.',
+    value3Title: 'نوآوری و تحلیل',
+    value3Text: 'بهره‌گیری از ابزارهای نوین برای راهکارهای خالقانه متناسب با بازار ایران.',
+    value4Title: 'اخلاق تجاری',
+    value4Text: 'رعایت اصول اخلاق حرفه‌ای و تالش برای اثرگذاری مثبت بر اکوسیستم کسب‌وکار.',
+    value5Title: 'همکاری بلندمدت',
+    value5Text: 'رابطه مشارکتی پایدار — موفقیت مشتری، موفقیت ما است.',
+    value6Title: 'چابکی و پاسخگویی',
+    value6Text: 'انطباق سریع با تغییرات و ارائه پاسخ مؤثر در هر مرحله.',
+    footerCopy: '© ۱۴۰۴ — تمامی حقوق محفوظ است',
+    langToggleText: 'EN'
+  },
+  en: {
+    navServices: 'Services',
+    navCases: 'Case Studies',
+    navContact: 'Contact',
+    backHome: 'Back to Home',
+    aboutEyebrow: 'About Blue Pyramid',
+    aboutTitle: 'History, Team & Values',
+    founderName: 'Mohammad Taqhi Aghadir',
+    founderRole: 'Founder & Strategy Consultant',
+    founderBio: 'MBA in Management Strategy from Tehran University and MSc in Biomedical Engineering from Islamic Azad University. Over 10 years of experience in strategic consulting, financial analysis, KPI design and business modeling for startups and enterprises.',
+    missionTitle: 'Mission',
+    missionText: 'Blue Pyramid guides Iranian organizations, entrepreneurs and investors on the path of informed decision-making and sustainable growth.',
+    visionTitle: 'Vision',
+    visionText: 'By 2030, Blue Pyramid is one of the most trusted strategic consulting firms in the country, a national reference in Fintech and Digital Health.',
+    valuesEyebrow: 'Principles & Values',
+    valuesTitle: 'Our Core Values',
+    value1Title: 'Integrity & Accountability',
+    value1Text: 'Complete responsibility to commitments and transparency in all interactions.',
+    value2Title: 'Excellence in Quality',
+    value2Text: 'Delivering precise, documented and data-driven solutions without compromising standards.',
+    value3Title: 'Innovation & Analytics',
+    value3Text: 'Using modern tools for creative solutions tailored to Iran\'s market.',
+    value4Title: 'Business Ethics',
+    value4Text: 'Adherence to professional ethics and commitment to positive impact on the business ecosystem.',
+    value5Title: 'Long-term Partnership',
+    value5Text: 'Sustainable collaborative relationships — your success is our success.',
+    value6Title: 'Agility & Responsiveness',
+    value6Text: 'Quick adaptation to changes and effective responses at every stage.',
+    footerCopy: '© 2024 — All rights reserved',
+    langToggleText: 'FA'
+  }
+};
+
+let currentLang = localStorage.getItem('bluepyramid-lang') || 'fa';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+  document.body.style.direction = lang === 'fa' ? 'rtl' : 'ltr';
+  
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+  
+  const toggle = document.getElementById('lang-toggle');
+  if (toggle) {
+    toggle.textContent = translations[lang].langToggleText;
+  }
+  
+  localStorage.setItem('bluepyramid-lang', lang);
+}
+
+function toggleLanguage() {
+  setLanguage(currentLang === 'fa' ? 'en' : 'fa');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setLanguage(currentLang);
+  const toggle = document.getElementById('lang-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', toggleLanguage);
+  }
+});
+</script>
+
+</body>
+</html>
