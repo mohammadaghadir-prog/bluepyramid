@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /about.html
+Disallow: /admin/
+Disallow: /private/
+
+# Crawl delay to be respectful
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://bluepyramid.pages.dev/sitemap.xml
+
+# Respect bots
+Allow: Googlebot
+Allow: Bingbot
