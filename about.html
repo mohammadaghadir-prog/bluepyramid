@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="درباره هرم آبی - تیم، بنیانگذار و مأموریت. آشنایی با اصول و ارزش‌های محوری شرکت.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="درباره Blue Pyramid">
+  <meta property="og:description" content="تاریخ، تیم و ارزش‌های محوری">
+  <meta link rel="canonical" href="https://bluepyramid.pages.dev/about.html"> content="width=device-width, initial-scale=1.0">
   <title>درباره ما - هرم آبی</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Vazirmatn:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -356,11 +361,46 @@
         font-size: 2rem;
       }
     }
-  </style>
+  
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+      }
+      
+      main {
+        padding: 40px 20px;
+      }
+      
+      h1 { font-size: 2rem; }
+      
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      button, a[class*="btn"] {
+        min-height: 48px;
+        min-width: 48px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      main { padding: 30px 16px; }
+      h1 { font-size: 1.5rem; }
+      .content-grid { gap: 20px; }
+    }
+</style>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
 
-<nav>
+<nav role="navigation" aria-label="ناوبری اصلی">
   <a href="/" class="nav-brand-name">BLUE PYRAMID</a>
   <ul class="nav-links">
     <li><a href="/#services" data-i18n="navServices">خدمات</a></li>
@@ -370,7 +410,7 @@
   <button id="lang-toggle">EN</button>
 </nav>
 
-<main>
+<main id="main-content" aria-label="درباره">
   <a href="/" class="btn-back">← <span data-i18n="backHome">بازگشت به خانه</span></a>
 
   <section class="content-section">
