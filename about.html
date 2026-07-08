@@ -338,14 +338,73 @@
       font-size: 0.85rem;
     }
 
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      margin: 0 10px;
+    }
+
+    .mobile-menu-btn span {
+      width: 25px;
+      height: 2px;
+      background: var(--glow);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
     @media (max-width: 768px) {
       nav {
         padding: 16px 20px;
         flex-wrap: wrap;
       }
 
+      .mobile-menu-btn {
+        display: flex;
+      }
+
       .nav-links {
-        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, rgba(10,22,40,.99), rgba(5,13,26,.99));
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 1px solid rgba(77,159,255,.15);
+        z-index: 998;
+        width: 100%;
+      }
+
+      .nav-links.active {
+        max-height: 300px;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 20px;
+        border-bottom: 1px solid rgba(77,159,255,.08);
       }
 
       main {
@@ -363,11 +422,6 @@
     }
   
     @media (max-width: 768px) {
-      nav {
-        padding: 16px 20px;
-        flex-wrap: wrap;
-      }
-      
       main {
         padding: 40px 20px;
       }
@@ -402,7 +456,12 @@
 
 <nav role="navigation" aria-label="ناوبری اصلی">
   <a href="/" class="nav-brand-name">BLUE PYRAMID</a>
-  <ul class="nav-links">
+  <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="منوی تغییر" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="/#services" data-i18n="navServices">خدمات</a></li>
     <li><a href="/#cases" data-i18n="navCases">نمونه‌کارها</a></li>
     <li><a href="/#contact" data-i18n="navContact">تماس</a></li>
@@ -575,6 +634,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('lang-toggle');
   if (toggle) {
     toggle.addEventListener('click', toggleLanguage);
+  }
+
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', menuToggle.classList.contains('active'));
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 });
 </script>
