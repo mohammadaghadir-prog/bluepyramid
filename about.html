@@ -304,6 +304,182 @@
       line-height: 1.7;
     }
 
+    /* SECTION TITLE (shared) */
+    .sec-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      color: var(--white);
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    /* WHY US - competitive advantage */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .why-card {
+      background: linear-gradient(135deg, rgba(13,31,60,0.5), rgba(5,14,28,0.85));
+      border: 1px solid rgba(77,159,255,0.15);
+      border-radius: 8px;
+      padding: 32px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .why-card:hover {
+      border-color: rgba(77,159,255,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(77,159,255,0.12);
+    }
+
+    .why-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .why-card h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--glow);
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .why-card p {
+      color: var(--silver);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* STATS */
+    .stats-band {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+      background: linear-gradient(135deg, rgba(30,111,255,0.1), rgba(77,159,255,0.04));
+      border: 1px solid rgba(77,159,255,0.2);
+      border-radius: 10px;
+      padding: 44px 32px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--glow);
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--silver);
+      font-size: 0.85rem;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* SCOPE */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .scope-card {
+      background: rgba(77,159,255,0.06);
+      border-left: 3px solid var(--blue);
+      border-radius: 6px;
+      padding: 28px;
+    }
+
+    .scope-card h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--cyan);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .scope-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .scope-card li {
+      color: var(--silver);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      padding-right: 20px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .scope-card li::before {
+      content: '◈';
+      color: var(--glow);
+      position: absolute;
+      right: 0;
+      font-size: 0.7rem;
+      top: 4px;
+    }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(30,111,255,0.15), rgba(13,31,60,0.6));
+      border: 1px solid rgba(77,159,255,0.3);
+      border-radius: 12px;
+      padding: 56px 40px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      color: var(--silver);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, var(--blue), var(--glow));
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      border-radius: 6px;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      box-shadow: 0 4px 20px rgba(30,111,255,0.3);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(30,111,255,0.45);
+    }
+
     .btn-back {
       display: inline-flex;
       align-items: center;
@@ -530,6 +706,111 @@
     </div>
   </section>
 
+  <section class="content-section">
+    <div class="section-eyebrow" data-i18n="whyEyebrow">مزیت رقابتی</div>
+    <h2 class="sec-title" data-i18n="whyTitle">چرا هرم آبی؟</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-num">۰۱</span>
+        <h4 data-i18n="why1Title">تخصص میان‌رشته‌ای واقعی</h4>
+        <p data-i18n="why1Text">بیشتر شرکت‌های مشاوره یا استراتژی می‌دانند یا مالی. هرم آبی هر دو را با پیشینه اجرایی در فناوری پزشکی ترکیب می‌کند — مزیتی ملموس برای HealthTech و Fintech.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">۰۲</span>
+        <h4 data-i18n="why2Title">رویکرد داده‌محور، نه توصیه‌محور</h4>
+        <p data-i18n="why2Text">توصیه‌ها بر پایه داده، مدل‌سازی کمّی و تحلیل رقابتی مستند است. مشتری در پایان هر پروژه یک ابزار تصمیم‌گیری قابل استفاده دریافت می‌کند، نه فقط یک گزارش.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">۰۳</span>
+        <h4 data-i18n="why3Title">تیم کوچک، پاسخگویی بالا</h4>
+        <p data-i18n="why3Text">برخلاف شرکت‌های بزرگ که پروژه را به کارآموزان می‌سپارند، بنیان‌گذار و متخصصان ارشد مستقیماً روی هر پروژه کار می‌کنند. مشتری می‌داند با چه کسی طرف است.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">۰۴</span>
+        <h4 data-i18n="why4Title">درک بومی بازار ایران</h4>
+        <p data-i18n="why4Text">راهکارها با واقعیت‌های اقتصادی، حقوقی و فرهنگی ایران طراحی می‌شوند — نه ترجمه الگوهای خارجی که در محیط محلی کارآمد نیستند.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-num">۰۵</span>
+        <h4 data-i18n="why5Title">شفافیت در قرارداد و تحویل</h4>
+        <p data-i18n="why5Text">اهداف، تایم‌لاین و خروجی‌ها از ابتدا مستند و قابل سنجش تعریف می‌شوند. مشتری در هر مرحله می‌داند چه چیزی دریافت می‌کند.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="stats-band">
+      <div class="stat-item">
+        <div class="stat-num" data-i18n="stat1Num">۲in۱</div>
+        <div class="stat-label" data-i18n="stat1Label">استراتژی + مالی</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-i18n="stat2Num">۱۰+</div>
+        <div class="stat-label" data-i18n="stat2Label">سال تجربه</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-i18n="stat3Num">۲</div>
+        <div class="stat-label" data-i18n="stat3Label">حوزه تخصص محوری</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-i18n="stat4Num">۱۴۰۹</div>
+        <div class="stat-label" data-i18n="stat4Label">افق چشم‌انداز</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-eyebrow" data-i18n="scopeEyebrow">دامنه فعالیت</div>
+    <h2 class="sec-title" data-i18n="scopeTitle">در چه حوزه‌هایی کار می‌کنیم</h2>
+
+    <div class="scope-grid">
+      <div class="scope-card">
+        <h4 data-i18n="scopeServicesTitle">خدمات</h4>
+        <ul>
+          <li data-i18n="scopeService1">مشاوره استراتژی سازمانی</li>
+          <li data-i18n="scopeService2">مشاوره مالی و سرمایه‌گذاری</li>
+          <li data-i18n="scopeService3">طراحی KPI و OKR</li>
+          <li data-i18n="scopeService4">توسعه کسب‌وکار و بیزینس‌پلن</li>
+          <li data-i18n="scopeService5">تحلیل داده و هوشمندی رقابتی</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h4 data-i18n="scopeClientsTitle">مخاطبان</h4>
+        <ul>
+          <li data-i18n="scopeClient1">کسب‌وکارهای کوچک و متوسط (SME)</li>
+          <li data-i18n="scopeClient2">استارتاپ‌ها و کارآفرینان</li>
+          <li data-i18n="scopeClient3">شرکت‌های بزرگ و هولدینگ‌ها</li>
+          <li data-i18n="scopeClient4">سرمایه‌گذاران حقیقی و حقوقی</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h4 data-i18n="scopeIndustriesTitle">صنایع</h4>
+        <ul>
+          <li data-i18n="scopeIndustry1">فنتک و خدمات مالی نوین</li>
+          <li data-i18n="scopeIndustry2">سلامت دیجیتال و فناوری پزشکی</li>
+          <li data-i18n="scopeIndustry3">سایر صنایع — صنعت‌آگنوستیک</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <h4 data-i18n="scopeGeoTitle">جغرافیا</h4>
+        <ul>
+          <li data-i18n="scopeGeo1">تهران — دفتر مرکزی</li>
+          <li data-i18n="scopeGeo2">سراسر ایران — حضوری و آنلاین</li>
+          <li data-i18n="scopeGeo3">بازارهای منطقه‌ای — توسعه آینده</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="cta-box">
+      <h2 data-i18n="ctaTitle">آماده رشد هستید؟</h2>
+      <p data-i18n="ctaText">بیایید درباره چالش‌های کسب‌وکار شما گفتگو کنیم و ببینیم چطور می‌توانیم به رشد پایدار شما کمک کنیم.</p>
+      <a href="/#contact" class="cta-btn" data-i18n="ctaBtn">شروع مشاوره</a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -566,6 +847,50 @@ window.translations = {
     value5Text: 'رابطه مشارکتی پایدار — موفقیت مشتری، موفقیت ما است.',
     value6Title: 'چابکی و پاسخگویی',
     value6Text: 'انطباق سریع با تغییرات و ارائه پاسخ مؤثر در هر مرحله.',
+    whyEyebrow: 'مزیت رقابتی',
+    whyTitle: 'چرا هرم آبی؟',
+    why1Title: 'تخصص میان‌رشته‌ای واقعی',
+    why1Text: 'بیشتر شرکت‌های مشاوره یا استراتژی می‌دانند یا مالی. هرم آبی هر دو را با پیشینه اجرایی در فناوری پزشکی ترکیب می‌کند — مزیتی ملموس برای HealthTech و Fintech.',
+    why2Title: 'رویکرد داده‌محور، نه توصیه‌محور',
+    why2Text: 'توصیه‌ها بر پایه داده، مدل‌سازی کمّی و تحلیل رقابتی مستند است. مشتری در پایان هر پروژه یک ابزار تصمیم‌گیری قابل استفاده دریافت می‌کند، نه فقط یک گزارش.',
+    why3Title: 'تیم کوچک، پاسخگویی بالا',
+    why3Text: 'برخلاف شرکت‌های بزرگ که پروژه را به کارآموزان می‌سپارند، بنیان‌گذار و متخصصان ارشد مستقیماً روی هر پروژه کار می‌کنند. مشتری می‌داند با چه کسی طرف است.',
+    why4Title: 'درک بومی بازار ایران',
+    why4Text: 'راهکارها با واقعیت‌های اقتصادی، حقوقی و فرهنگی ایران طراحی می‌شوند — نه ترجمه الگوهای خارجی که در محیط محلی کارآمد نیستند.',
+    why5Title: 'شفافیت در قرارداد و تحویل',
+    why5Text: 'اهداف، تایم‌لاین و خروجی‌ها از ابتدا مستند و قابل سنجش تعریف می‌شوند. مشتری در هر مرحله می‌داند چه چیزی دریافت می‌کند.',
+    stat1Num: '۲in۱',
+    stat1Label: 'استراتژی + مالی',
+    stat2Num: '۱۰+',
+    stat2Label: 'سال تجربه',
+    stat3Num: '۲',
+    stat3Label: 'حوزه تخصص محوری',
+    stat4Num: '۱۴۰۹',
+    stat4Label: 'افق چشم‌انداز',
+    scopeEyebrow: 'دامنه فعالیت',
+    scopeTitle: 'در چه حوزه‌هایی کار می‌کنیم',
+    scopeServicesTitle: 'خدمات',
+    scopeService1: 'مشاوره استراتژی سازمانی',
+    scopeService2: 'مشاوره مالی و سرمایه‌گذاری',
+    scopeService3: 'طراحی KPI و OKR',
+    scopeService4: 'توسعه کسب‌وکار و بیزینس‌پلن',
+    scopeService5: 'تحلیل داده و هوشمندی رقابتی',
+    scopeClientsTitle: 'مخاطبان',
+    scopeClient1: 'کسب‌وکارهای کوچک و متوسط (SME)',
+    scopeClient2: 'استارتاپ‌ها و کارآفرینان',
+    scopeClient3: 'شرکت‌های بزرگ و هولدینگ‌ها',
+    scopeClient4: 'سرمایه‌گذاران حقیقی و حقوقی',
+    scopeIndustriesTitle: 'صنایع',
+    scopeIndustry1: 'فنتک و خدمات مالی نوین',
+    scopeIndustry2: 'سلامت دیجیتال و فناوری پزشکی',
+    scopeIndustry3: 'سایر صنایع — صنعت‌آگنوستیک',
+    scopeGeoTitle: 'جغرافیا',
+    scopeGeo1: 'تهران — دفتر مرکزی',
+    scopeGeo2: 'سراسر ایران — حضوری و آنلاین',
+    scopeGeo3: 'بازارهای منطقه‌ای — توسعه آینده',
+    ctaTitle: 'آماده رشد هستید؟',
+    ctaText: 'بیایید درباره چالش‌های کسب‌وکار شما گفتگو کنیم و ببینیم چطور می‌توانیم به رشد پایدار شما کمک کنیم.',
+    ctaBtn: 'شروع مشاوره',
     footerCopy: '© ۱۴۰۴ — تمامی حقوق محفوظ است',
     langToggleText: 'EN'
   },
@@ -597,6 +922,50 @@ window.translations = {
     value5Text: 'Sustainable collaborative relationships — your success is our success.',
     value6Title: 'Agility & Responsiveness',
     value6Text: 'Quick adaptation to changes and effective responses at every stage.',
+    whyEyebrow: 'Competitive Edge',
+    whyTitle: 'Why Blue Pyramid?',
+    why1Title: 'Genuine Cross-Disciplinary Expertise',
+    why1Text: 'Most consulting firms know either strategy or finance. Blue Pyramid combines both with an executive background in medical technology — a tangible advantage for HealthTech and Fintech.',
+    why2Title: 'Data-Driven, Not Advice-Driven',
+    why2Text: 'Recommendations are grounded in data, quantitative modeling and documented competitive analysis. Every project ends with a usable decision-making tool, not just a report.',
+    why3Title: 'Small Team, High Accountability',
+    why3Text: 'Unlike large firms that delegate projects to interns, the founder and senior specialists work directly on every project. You always know who you are dealing with.',
+    why4Title: 'Native Understanding of Iran\'s Market',
+    why4Text: 'Solutions are designed around Iran\'s economic, legal and cultural realities — not translations of foreign templates that fail in the local environment.',
+    why5Title: 'Transparency in Contract & Delivery',
+    why5Text: 'Objectives, timelines and deliverables are documented and measurable from the start. You know exactly what you receive at every stage.',
+    stat1Num: '2in1',
+    stat1Label: 'Strategy + Finance',
+    stat2Num: '10+',
+    stat2Label: 'Years Experience',
+    stat3Num: '2',
+    stat3Label: 'Core Specialties',
+    stat4Num: '2030',
+    stat4Label: 'Vision Horizon',
+    scopeEyebrow: 'Scope of Work',
+    scopeTitle: 'Areas We Work In',
+    scopeServicesTitle: 'Services',
+    scopeService1: 'Corporate Strategy Consulting',
+    scopeService2: 'Financial & Investment Advisory',
+    scopeService3: 'KPI & OKR Design',
+    scopeService4: 'Business Development & Business Plans',
+    scopeService5: 'Data Analytics & Competitive Intelligence',
+    scopeClientsTitle: 'Clients',
+    scopeClient1: 'Small & Medium Enterprises (SME)',
+    scopeClient2: 'Startups & Entrepreneurs',
+    scopeClient3: 'Large Companies & Holdings',
+    scopeClient4: 'Individual & Institutional Investors',
+    scopeIndustriesTitle: 'Industries',
+    scopeIndustry1: 'Fintech & Modern Financial Services',
+    scopeIndustry2: 'Digital Health & Medical Technology',
+    scopeIndustry3: 'Other Industries — Industry-Agnostic',
+    scopeGeoTitle: 'Geography',
+    scopeGeo1: 'Tehran — Headquarters',
+    scopeGeo2: 'All of Iran — In-Person & Online',
+    scopeGeo3: 'Regional Markets — Future Expansion',
+    ctaTitle: 'Ready to Grow?',
+    ctaText: 'Let\'s talk about your business challenges and see how we can help you achieve sustainable growth.',
+    ctaBtn: 'Start Consulting',
     footerCopy: '© 2024 — All rights reserved',
     langToggleText: 'FA'
   }
