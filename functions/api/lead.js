@@ -26,6 +26,43 @@ export async function onRequestOptions() {
   return new Response(null, { headers: CORS });
 }
 
+// TEMPORARY diagnostic endpoint — remove after setup is confirmed working.
+//   GET /api/lead          -> shows whether the two variables are set
+//   GET /api/lead?test=1   -> also sends a test message and returns Telegram's raw reply
+export async function onRequestGet({ request, env }) {
+  const url = new URL(request.url);
+  const hasToken = !!env.TELEGRAM_BOT_TOKEN;
+  const hasChat = !!env.TELEGRAM_CHAT_ID;
+  const out = {
+    ok: true,
+    configured: { TELEGRAM_BOT_TOKEN: hasToken, TELEGRAM_CHAT_ID: hasChat },
+    chat_id_seen: hasChat ? String(env.TELEGRAM_CHAT_ID) : null,
+    token_length: hasToken ? String(env.TELEGRAM_BOT_TOKEN).length : 0,
+    token_has_colon: hasToken ? String(env.TELEGRAM_BOT_TOKEN).includes(':') : false,
+  };
+  if (url.searchParams.get('test') === '1') {
+    if (!hasToken || !hasChat) {
+      out.test = 'skipped_not_configured';
+      return json(out, 200);
+    }
+    try {
+      const resp = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: env.TELEGRAM_CHAT_ID,
+          text: '✅ تست اتصال — هرم آبی. اگر این پیام را می‌بینی، همه‌چیز درست است.',
+        }),
+      });
+      out.telegram_status = resp.status;
+      out.telegram_response = await resp.json();
+    } catch (e) {
+      out.test_error = String(e && e.message ? e.message : e);
+    }
+  }
+  return json(out, 200);
+}
+
 export async function onRequestPost({ request, env }) {
   try {
     // --- parse body (accepts JSON or form-encoded) ---
