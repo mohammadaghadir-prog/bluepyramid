@@ -1,14 +1,6 @@
 # Cloudflare Pages redirects
 
-# Redirect www to non-www (if needed)
-https://www.bluepyramid.pages.dev/* https://bluepyramid.pages.dev/:splat 301
-
-# Trailing slash redirects
+# Pretty URLs (extensionless) -> actual html files
 /about /about.html 301
 /privacy /privacy.html 301
 /terms /terms.html 301
-
-# 404 handling
-/* /404.html 404
-
-# Security headers will be handled by Cloudflare Pages settings
