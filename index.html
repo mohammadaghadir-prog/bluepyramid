@@ -1211,9 +1211,9 @@ window.translations = {
     contactEmailLabel: 'Email',
     contactLocationLabel: 'Location',
     formTitle: 'Request a Consultation',
-    formSubtitle: 'Fill out the form — we'll contact you within 24 hours.',
+    formSubtitle: "Fill out the form — we'll contact you within 24 hours.",
     formSuccess: 'Your request has been received',
-    formSuccessMsg: 'We'll contact you within 24 hours.<br>Thank you for trusting Blue Pyramid.',
+    formSuccessMsg: "We'll contact you within 24 hours.<br>Thank you for trusting Blue Pyramid.",
     formNameLabel: 'Full Name *',
     formPhoneLabel: 'Phone Number *',
     formEmailLabel: 'Email',
@@ -1597,7 +1597,8 @@ function toggleLang(e){
   e.target.textContent=isEn?'FA':'EN';
 }
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+<script>
 // Form validation with real-time feedback
 document.querySelectorAll('[data-fs-field]').forEach(input => {
   input.addEventListener('blur', () => {
