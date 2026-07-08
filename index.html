@@ -1777,6 +1777,26 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
 formspree('initForm', { formElement: '#lead-form', formId: 'xzdqqbqr' });
 
+// Instant Telegram notification on every signup (fire-and-forget, parallel to Formspree)
+(function () {
+  var form = document.getElementById('lead-form');
+  if (!form) return;
+  form.addEventListener('submit', function () {
+    if (!form.checkValidity || form.checkValidity()) {
+      try {
+        var payload = {};
+        new FormData(form).forEach(function (v, k) { payload[k] = v; });
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(function () {});
+      } catch (e) {}
+    }
+  });
+})();
+
 // LANG TOGGLE
 let isEn=false;
 function toggleLang(e){
