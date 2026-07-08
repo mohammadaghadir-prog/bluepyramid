@@ -1,6 +1,0 @@
-# Cloudflare Pages redirects
-
-# Pretty URLs (extensionless) -> actual html files
-/about /about.html 301
-/privacy /privacy.html 301
-/terms /terms.html 301
