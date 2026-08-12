@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects
+# The repo root is the deploy root and there is no build step, so every
+# committed file is publicly served unless blocked here.
+
+# Tooling and metadata that must never be reachable on the public site.
+/.claude/*   /404.html   404
+/.git/*      /404.html   404
