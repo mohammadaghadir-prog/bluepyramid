@@ -296,6 +296,37 @@ footer{position:relative;z-index:1;padding:38px 80px;border-top:1px solid rgba(3
   text-align: left;
 }
 
+/* Persian glyph fallback.
+   The blanket [lang="fa"] * rule above is only (0,1,0), so any rule
+   written as .class element (0,1,1) outranks it. Those selectors kept
+   'Cinzel', which carries no Persian glyphs, so their Persian text was
+   falling through to the browser's default serif.
+
+   Vazirmatn is appended as a fallback instead of replacing the stack, so
+   resolution stays per character: Latin still renders in Cinzel and the
+   English toggle is untouched, while Persian resolves to Vazirmatn.
+   .meth-step h3 and .hero-scroll-ind span are deliberately left out —
+   they hold Latin copy in both languages. */
+.srv-card h3,
+.case-card h3,
+.contact-info h3,
+.lead-form h3,
+.f-group label,
+.f-success h4,
+.footer-links a {
+  font-family: 'Cinzel', 'Vazirmatn', sans-serif;
+}
+
+/* Latin tracking pulls apart the cursive joins in Persian script, so it is
+   dropped only while the page is in Persian; English keeps its spacing. */
+[lang="fa"] .srv-card h3,
+[lang="fa"] .lead-form h3,
+[lang="fa"] .f-group label,
+[lang="fa"] .f-success h4,
+[lang="fa"] .footer-links a {
+  letter-spacing: normal;
+}
+
     input:focus, textarea:focus, select:focus, button:focus, a:focus {
       outline: 2px solid var(--cyan);
       outline-offset: 2px;
