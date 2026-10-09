@@ -2,105 +2,124 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحه پیدا نشد - Blue Pyramid</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Vazirmatn:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --deep: #050d1a;
-      --blue: #1e6fff;
-      --cyan: #4da6ff;
-      --glow: #4d9fff;
-      --silver: #b8c5d6;
-      --white: #ffffff;
-    }
-    body {
-      background: var(--deep);
-      color: var(--white);
-      font-family: 'Vazirmatn', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .error-container {
-      text-align: center;
-      max-width: 600px;
-    }
-    .error-code {
-      font-size: 6rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--glow), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-      font-family: 'Cinzel', serif;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: var(--white);
-      font-family: 'Cinzel', serif;
-    }
-    p {
-      color: var(--silver);
-      margin-bottom: 30px;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-    .error-actions {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    a {
-      padding: 12px 28px;
-      background: rgba(77,159,255,0.15);
-      color: var(--glow);
-      text-decoration: none;
-      border-radius: 4px;
-      border: 1px solid rgba(77,159,255,0.3);
-      transition: all 0.3s;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    a:hover {
-      background: rgba(77,159,255,0.25);
-      border-color: var(--glow);
-    }
-    .animation {
-      margin: 40px 0;
-      font-size: 4rem;
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-    @media (max-width: 600px) {
-      .error-code { font-size: 4rem; }
-      h1 { font-size: 1.8rem; }
-      .error-actions { flex-direction: column; }
-      a { width: 100%; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>صفحه پیدا نشد (۴۰۴) | هرم آبی — Blue Pyramid</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#030a16">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" id="font-css" href="https://fonts.googleapis.com/css2?family=Michroma&amp;family=Vazirmatn:wght@300..900&amp;display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&amp;family=Vazirmatn:wght@300..900&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/site.css?v=2.6">
+  <script src="/assets/js/head.js?v=2.6"></script>
+
+  <link rel="preload" href="/assets/js/pyramid.js?v=2.6" as="script">
 </head>
 <body>
-
-<div class="error-container">
-  <div class="error-code">۴۰۴</div>
-  <div class="animation">▲</div>
-  <h1>صفحه پیدا نشد</h1>
-  <p>متأسفانه صفحه‌ای که دنبالش می‌گردید وجود ندارد یا منتقل شده است.</p>
-  
-  <div class="error-actions">
-    <a href="/">بازگشت به خانه</a>
-    <a href="/about.html">درباره ما</a>
-  </div>
+<a class="skip-link" href="#main" data-i18n="skip">رفتن به محتوای اصلی</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="ambient" aria-hidden="true">
+  <div class="ambient__blob ambient__blob--1"></div>
+  <div class="ambient__blob ambient__blob--2"></div>
+  <div class="ambient__blob ambient__blob--3"></div>
+  <div class="ambient__grid"></div>
+  <div class="ambient__noise"></div>
 </div>
 
+<header class="site-nav">
+  <div class="container site-nav__inner">
+    <a class="brand" href="/">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="bm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe2ff"/><stop offset="1" stop-color="#1e6fff"/></linearGradient></defs><path d="M32 6 L6 56 M32 6 L58 56 M17 38 H47 M32 6 V60 M17 38 L32 50 L47 38" fill="none" stroke="url(#bm)" stroke-width="3.6" stroke-linejoin="round"/></svg>
+      <span class="brand__name"><b>BLUE</b> <span>PYRAMID</span></span>
+    </a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="/#services" data-i18n="navServices">خدمات</a></li>
+      <li><a href="/#method" data-i18n="navMethod">متدولوژی</a></li>
+      <li><a href="/#cases" data-i18n="navCases">نمونه‌کارها</a></li>
+      <li><a href="/#faq" data-i18n="navFaq">سؤالات</a></li>
+      <li><a href="/about" data-i18n="navAbout">درباره ما</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="EN — English version">EN</button>
+      <a class="btn btn--primary btn--sm nav-cta" href="/#contact" data-i18n="navCta">مشاوره رایگان</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-controls="nav-menu" aria-expanded="false" aria-label="باز کردن منو"><span class="menu-btn__bars"><i></i><i></i><i></i></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="error-page">
+  <div>
+    <canvas class="error-page__canvas" id="mini-canvas" aria-hidden="true"></canvas>
+    <p class="error-page__code text-gradient" aria-hidden="true">404</p>
+    <h1 data-i18n="errTitle">این صفحه پیدا نشد</h1>
+    <p data-i18n="errText">صفحه‌ای که دنبالش هستید وجود ندارد یا جابه‌جا شده است. از مسیرهای زیر ادامه دهید.</p>
+    <div class="cta-band__actions">
+      <a class="btn btn--primary" href="/" data-magnetic><span data-i18n="errHome">بازگشت به خانه</span><svg class="icon-arrow" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+      <a class="btn btn--ghost" href="/#contact" data-magnetic data-i18n="navContact">تماس</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 L6 56 M32 6 L58 56 M17 38 H47 M32 6 V60 M17 38 L32 50 L47 38" fill="none" stroke="url(#bm)" stroke-width="3.6" stroke-linejoin="round"/></svg>
+          <span class="brand__name"><b>BLUE</b> <span>PYRAMID</span></span>
+        </a>
+        <p data-i18n="footerAbout">مشاوره استراتژیک و مالی داده‌محور برای سازمان‌ها، استارتاپ‌ها و سرمایه‌گذاران — از تشخیص مسئله تا پایش نتایج.</p>
+        <div class="social"><!--social-links--></div>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title" data-i18n="footerExplore">دسترسی سریع</h2>
+        <ul>
+          <li><a href="/#services" data-i18n="navServices">خدمات</a></li>
+          <li><a href="/#method" data-i18n="navMethod">متدولوژی</a></li>
+          <li><a href="/#cases" data-i18n="navCases">نمونه‌کارها</a></li>
+          <li><a href="/#faq" data-i18n="navFaq">سؤالات</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title" data-i18n="footerCompany">شرکت</h2>
+        <ul>
+          <li><a href="/about" data-i18n="navAbout">درباره ما</a></li>
+          <li><a href="/#contact" data-i18n="navContact">تماس</a></li>
+          <li><a href="/privacy" data-i18n="footerPrivacy">حریم خصوصی</a></li>
+          <li><a href="/terms" data-i18n="footerTerms">شرایط و ضوابط</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-title" data-i18n="footerContact">ارتباط با ما</h2>
+        <ul>
+          <li><a href="tel:+989207413175" class="ltr">+98&nbsp;920&nbsp;741&nbsp;3175</a></li>
+          <li><a href="mailto:bluepyramid.info@gmail.com">bluepyramid.info@gmail.com</a></li>
+          <li><span data-i18n="footerCity">تهران، ایران</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footerCopy">© ۱۴۰۴ هرم آبی — تمامی حقوق محفوظ است.</span>
+      <span class="ltr">Blue Pyramid Consulting</span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/json" id="i18n">
+{
+  "en": {
+    "pageTitle": "Page not found (404) | Blue Pyramid",
+    "errTitle": "We couldn't find that page",
+    "errText": "The page you are looking for doesn't exist or has moved. Pick up from one of these paths.",
+    "errHome": "Back to home"
+  }
+}
+</script>
+<script src="/assets/js/pyramid.js?v=2.6" defer></script>
+<script src="/assets/js/site.js?v=2.6" defer></script>
 </body>
 </html>

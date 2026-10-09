@@ -1,17 +1,28 @@
-# Cloudflare Pages custom headers
-# Prevent aggressive browser/CDN caching of HTML so fixes go live immediately
+# Cloudflare Pages response headers
 
-/*.html
-  Cache-Control: no-cache, no-store, must-revalidate
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io https://cloudflareinsights.com https://fonts.googleapis.com https://fonts.gstatic.com; form-action 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests
 
+# HTML: always revalidate so a deploy is visible immediately, but stay
+# bfcache-friendly (no-store would disable the back/forward cache).
 /
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: public, max-age=0, must-revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
 
-/about.html
-  Cache-Control: no-cache, no-store, must-revalidate
+# Versioned assets (?v=…) — safe to cache for a week.
+/assets/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
-/privacy.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/terms.html
-  Cache-Control: no-cache, no-store, must-revalidate
+/favicon.ico
+  Cache-Control: public, max-age=2592000
+/favicon.svg
+  Cache-Control: public, max-age=2592000
+/apple-touch-icon.png
+  Cache-Control: public, max-age=2592000
