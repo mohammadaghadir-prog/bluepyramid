@@ -1,10 +1,8 @@
 /* Market Pulse — live prices.
  *
  * Polls the same-origin /api/prices every 15s while the tab is visible and
- * updates each asset card: the big price, a "since the report" change, the
- * quote time/source, and the current-price line on the ladder. The ladder's
- * support/resistance levels stay as published in the report; only the price
- * moves. If the feed is unreachable the report's own prices stay on screen.
+ * updates each asset card (price with an up/down flash, quote time, source).
+ * If the feed is unreachable the status line says so and polling backs off.
  */
 (function () {
   'use strict';
@@ -30,13 +28,12 @@
     status.setAttribute('data-state', state);
     status.textContent = state === 'live'
       ? 'قیمت‌ها زنده هستند — به‌روزرسانی خودکار هر ۱۵ ثانیه'
-      : 'اتصال به قیمت زنده برقرار نشد؛ قیمت‌های زمان گزارش نمایش داده می‌شود';
+      : 'اتصال به قیمت لحظه‌ای برقرار نشد؛ دوباره تلاش می‌کنیم…';
   }
 
   function update(card, q) {
     var id = card.getAttribute('data-asset');
     var dec = +card.getAttribute('data-decimals') || 0;
-    var report = +card.getAttribute('data-report-price');
     var price = q.price;
 
     var priceEl = card.querySelector('[data-live-price]');
@@ -53,28 +50,6 @@
     var closed = Date.now() - q.ts > STALE_MS;
     note.textContent = (closed ? 'بازار بسته است · آخرین قیمت ' : 'لحظه‌ای · ') + clock.format(q.ts) + ' به وقت تهران · ' + q.source;
     card.classList.toggle('is-live', !closed);
-
-    var chg = card.querySelector('[data-live-chg]');
-    if (chg && report) {
-      var pct = (price / report - 1) * 100;
-      // An arrow instead of +/−: a minus sign next to a number in Persian
-      // text gets moved to the wrong side by the bidi algorithm.
-      var dir = pct > 0.005 ? 'up' : pct < -0.005 ? 'down' : '';
-      chg.textContent = (dir === 'up' ? '▲ ' : dir === 'down' ? '▼ ' : '') + fa(Math.abs(pct).toFixed(2)) + '٪ نسبت به زمان گزارش';
-      chg.className = 'asset__chg' + (dir ? ' is-' + dir : '');
-      chg.hidden = false;
-    }
-
-    var ladder = card.querySelector('.ladder');
-    var line = card.querySelector('.ladder__price');
-    if (ladder && line) {
-      var lo = +ladder.getAttribute('data-lo'), hi = +ladder.getAttribute('data-hi');
-      var top = (hi - price) / (hi - lo) * 100;
-      line.classList.toggle('is-off-scale', top < 0 || top > 100);
-      line.style.setProperty('--t', Math.min(Math.max(top, 0), 100).toFixed(2) + '%');
-      var tag = line.querySelector('b');
-      if (tag) tag.textContent = money(price, dec);
-    }
   }
 
   function schedule() {
