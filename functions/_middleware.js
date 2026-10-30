@@ -6,7 +6,7 @@
 // and redirect rules never run. Middleware is the only layer that gets to
 // intercept first.
 
-const BLOCKED = ['/.claude/', '/.git/', '/.github/'];
+const BLOCKED = ['/.claude/', '/.git/', '/.github/', '/tools/'];
 
 export async function onRequest({ request, next }) {
   const { pathname } = new URL(request.url);

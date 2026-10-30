@@ -24,7 +24,7 @@
   var COMMON = {
     fa: {
       skip: 'رفتن به محتوای اصلی',
-      navServices: 'خدمات', navMethod: 'متدولوژی', navCases: 'نمونه‌کارها', navFaq: 'سؤالات', navAbout: 'درباره ما', navContact: 'تماس',
+      navServices: 'خدمات', navMethod: 'متدولوژی', navCases: 'نمونه‌کارها', navPulse: 'نبض بازار', navFaq: 'سؤالات', navAbout: 'درباره ما', navContact: 'تماس',
       navCta: 'مشاوره رایگان', menuOpen: 'باز کردن منو', menuClose: 'بستن منو', langLabel: 'EN — English version', langText: 'EN',
       brandLabel: 'هرم آبی — صفحه اصلی', quickContact: 'تماس سریع',
       navHome: 'خانه', toTop: 'بازگشت به بالا', callNow: 'تماس تلفنی',
@@ -35,7 +35,7 @@
     },
     en: {
       skip: 'Skip to main content',
-      navServices: 'Services', navMethod: 'Method', navCases: 'Case Studies', navFaq: 'FAQ', navAbout: 'About', navContact: 'Contact',
+      navServices: 'Services', navMethod: 'Method', navCases: 'Case Studies', navPulse: 'Market Pulse', navFaq: 'FAQ', navAbout: 'About', navContact: 'Contact',
       navCta: 'Free Consultation', menuOpen: 'Open menu', menuClose: 'Close menu', langLabel: 'FA — Persian version', langText: 'FA',
       brandLabel: 'Blue Pyramid — Home', quickContact: 'Quick contact',
       navHome: 'Home', toTop: 'Back to top', callNow: 'Call now',
@@ -360,6 +360,50 @@
     });
   }
 
+  /* ----------------------------------------- market pulse: live dates */
+  // The report is a dated snapshot. Countdown chips and the timeline's
+  // "today" marker are recomputed against the visitor's current date
+  // (Tehran time) so they never show a stale "3 days to go".
+  function tehranToday() {
+    try {
+      var p = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tehran', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+      return Date.parse(p + 'T00:00:00Z');
+    } catch (e) {
+      var n = new Date();
+      return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate());
+    }
+  }
+  function daysUntil(iso, today) { return Math.round((Date.parse(iso + 'T00:00:00Z') - today) / 864e5); }
+  function initPulseDates() {
+    var chips = $$('[data-until]');
+    var tl = $('#tl');
+    if (!chips.length && !tl) return;
+    var today = tehranToday();
+    chips.forEach(function (c) {
+      var n = daysUntil(c.getAttribute('data-until'), today);
+      var num = $('.cd__num', c), unit = $('.cd__unit', c);
+      if (n > 0) { num.textContent = toFa(n); return; }
+      c.classList.add(n === 0 ? 'is-today' : 'is-past');
+      num.textContent = n === 0 ? 'امروز:' : 'برگزار شد:';
+      if (unit) unit.hidden = true;
+    });
+    if (tl) {
+      var evs = $$('.tl__ev', tl);
+      evs.forEach(function (ev) {
+        var n = daysUntil(ev.getAttribute('data-date'), today);
+        if (n < 0) ev.classList.add('is-past');
+        if (n === 0) { ev.classList.add('is-today'); tl.classList.add('has-today-event'); }
+      });
+      var marker = $('.tl__today', tl);
+      if (marker && evs.length) {
+        var start = Date.parse($('time[datetime]', document.querySelector('.pulse-hero__date')).getAttribute('datetime') + 'T00:00:00Z');
+        var end = Date.parse(evs[evs.length - 1].getAttribute('data-date') + 'T00:00:00Z');
+        var x = Math.min(Math.max((today - start) / (end - start), 0), 1) * 100;
+        marker.style.setProperty('--x', x.toFixed(2) + '%');
+      }
+    }
+  }
+
   /* --------------------------------------------------------------- intro */
   function initIntro() {
     var intro = $('#intro');
@@ -403,6 +447,7 @@
     if (mini && window.BPPyramid) window.BPPyramid.mount(mini, { mode: 'mini' });
   });
   initCounters();
+  initPulseDates();
   initPointerFx();
   initTimeline();
   initForm();

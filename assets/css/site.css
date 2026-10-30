@@ -1377,9 +1377,9 @@ input[type="tel"], input[type="email"] { direction: ltr; text-align: left; }
   .stats-band > div:nth-child(3) { border-inline-start: 0; }
   .stats-band > div:nth-child(n + 3) { border-top: 1px solid var(--border); }
 }
-@media (max-width: 860px) {
+/* The header holds six links; collapse them into the menu before they wrap (English is widest). */
+@media (max-width: 1180px) {
   .menu-btn { display: inline-flex; }
-  .nav-cta { display: none; }
   .nav-links {
     position: fixed;
     inset-inline: 0;
@@ -1401,6 +1401,9 @@ input[type="tel"], input[type="email"] { direction: ltr; text-align: left; }
   .nav-links a { min-height: 54px; font-size: 1.05rem; border-bottom: 1px solid var(--border); padding: 0 4px; }
   .nav-links a::after { display: none; }
   .nav-actions { margin-inline-start: auto; }
+}
+@media (max-width: 860px) {
+  .nav-cta { display: none; }
   .mobile-cta { display: flex; }
   .to-top { bottom: 92px; }
 }
@@ -1448,3 +1451,15 @@ input[type="tel"], input[type="email"] { direction: ltr; text-align: left; }
   .js [data-reveal], .js [data-enter] { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
 .legal-body { padding-top: 0; }
+
+/* ---------- 25. Nav link to Market Pulse: small live dot ---------- */
+.nav-links a.nav-pulse { gap: 8px; }
+.nav-pulse::before {
+  content: '';
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: ping 2.2s infinite;
+}
