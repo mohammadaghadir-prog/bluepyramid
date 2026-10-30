@@ -37,7 +37,8 @@
     var price = q.price;
 
     var priceEl = card.querySelector('[data-live-price]');
-    priceEl.textContent = '$' + money(price, dec);
+    var prefix = card.hasAttribute('data-prefix') ? card.getAttribute('data-prefix') : '$';
+    priceEl.textContent = prefix + money(price, dec);
     if (last[id] != null && price !== last[id]) {
       var dir = price > last[id] ? 'is-up' : 'is-down';
       priceEl.classList.remove('is-up', 'is-down');
@@ -47,8 +48,12 @@
     last[id] = price;
 
     var note = card.querySelector('[data-live-note]');
-    var closed = Date.now() - q.ts > STALE_MS;
-    note.textContent = (closed ? 'بازار بسته است · آخرین قیمت ' : 'لحظه‌ای · ') + clock.format(q.ts) + ' به وقت تهران · ' + q.source;
+    var age = Date.now() - q.ts;
+    var closed = age > STALE_MS;
+    // Some feeds (Brent futures via Yahoo) publish with a few minutes' delay;
+    // say so instead of calling them live.
+    var label = closed ? 'بازار بسته است · آخرین قیمت ' : age > 2 * 60 * 1000 ? 'با تأخیر · ' : 'لحظه‌ای · ';
+    note.textContent = label + clock.format(q.ts) + ' به وقت تهران · ' + q.source;
     card.classList.toggle('is-live', !closed);
   }
 

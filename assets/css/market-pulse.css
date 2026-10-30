@@ -18,6 +18,9 @@
 .asset--gold { --c: var(--gold); }
 .asset--btc { --c: var(--btc); }
 .asset--eth { --c: var(--eth); }
+.asset--silver { --c: #d5dee9; }
+.asset--oil { --c: #3fd6a0; }
+.asset--spx { --c: #5aa8ff; }
 .asset__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .asset__head h3 { display: inline-flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 900; }
 .asset__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 12px var(--c); }
@@ -147,7 +150,14 @@
   .tl__txt::before { display: none; }
 }
 @media (max-width: 720px) {
-  .assets-grid { grid-template-columns: 1fr; }
+  /* six cards: two per row on phones */
+  .assets-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .asset { padding: 16px 14px; }
+  .asset__head h3 { font-size: 1rem; gap: 8px; }
+  .asset__pair { display: none; }
+  .asset__price { margin-top: 10px; font-size: clamp(1.15rem, 5.6vw, 1.6rem); }
+  .asset__unit { font-size: 0.74rem; }
+  .asset__note { margin-top: 10px; padding-top: 10px; font-size: 0.7rem; line-height: 1.6; }
 }
 
 /* ---- economic calendar (3 months, one timeline per month) ---- */

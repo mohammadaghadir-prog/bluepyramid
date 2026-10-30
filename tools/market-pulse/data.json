@@ -1,9 +1,12 @@
 {
   "assets": [
-    { "id": "xau", "name": "طلا", "pair": "XAU/USD", "color": "gold", "decimals": 1, "unit": "هر اونس" },
-    { "id": "btc", "name": "بیت‌کوین", "pair": "BTC/USD", "color": "btc", "decimals": 0, "unit": "هر واحد" },
-    { "id": "eth", "name": "اتریوم", "pair": "ETH/USD", "color": "eth", "decimals": 2, "unit": "هر واحد" }
+    { "id": "xau",   "name": "طلا",       "pair": "XAU/USD", "color": "gold",   "decimals": 1, "prefix": "$", "unit": "دلار آمریکا · هر اونس" },
+    { "id": "xag",   "name": "نقره",      "pair": "XAG/USD", "color": "silver", "decimals": 2, "prefix": "$", "unit": "دلار آمریکا · هر اونس" },
+    { "id": "brent", "name": "نفت برنت",  "pair": "BRENT",   "color": "oil",    "decimals": 2, "prefix": "$", "unit": "دلار آمریکا · هر بشکه" },
+    { "id": "spx",   "name": "S&P 500",   "pair": "SPX",     "color": "spx",    "decimals": 2, "prefix": "",  "unit": "شاخص بورس آمریکا · واحد شاخص" },
+    { "id": "btc",   "name": "بیت‌کوین",  "pair": "BTC/USD", "color": "btc",    "decimals": 0, "prefix": "$", "unit": "دلار آمریکا · هر واحد" },
+    { "id": "eth",   "name": "اتریوم",    "pair": "ETH/USD", "color": "eth",    "decimals": 2, "prefix": "$", "unit": "دلار آمریکا · هر واحد" }
   ],
   "disclaimer": "قیمت‌ها و تقویم فقط برای اطلاع‌رسانی‌اند و توصیه سرمایه‌گذاری به حساب نمی‌آیند.",
-  "source": "قیمت طلا: Swissquote (میانگین قیمت خرید و فروش بازار نقد)، پشتیبان gold-api.com. بیت‌کوین و اتریوم: Kraken، پشتیبان Coinbase. قیمت‌ها هر ۱۵ ثانیه به‌روز می‌شوند."
+  "source": "طلا و نقره: Swissquote (میانگین قیمت خرید و فروش بازار نقد)، پشتیبان gold-api.com. نفت برنت (قرارداد آتی ماه نزدیک ICE، با حدود ۱۰ دقیقه تأخیر) و شاخص S&P 500: Yahoo Finance. بیت‌کوین و اتریوم: Kraken، پشتیبان Coinbase. قیمت‌ها هر ۱۵ ثانیه به‌روز می‌شوند؛ شاخص S&P 500 فقط در ساعات کار بورس آمریکا تغییر می‌کند."
 }

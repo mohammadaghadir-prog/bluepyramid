@@ -50,13 +50,13 @@ def chrome():
 def asset_card(asset, i):
     """A live price card; assets/js/market-pulse.js fills in the price."""
     return f'''        <article class="card asset asset--{asset["color"]}" data-reveal data-d="{i}" aria-labelledby="as-{asset["id"]}"
-                 data-asset="{asset["id"]}" data-decimals="{asset.get("decimals", 0)}">
+                 data-asset="{asset["id"]}" data-decimals="{asset.get("decimals", 0)}" data-prefix="{asset.get("prefix", "$")}">
           <header class="asset__head">
             <h3 id="as-{asset["id"]}"><span class="asset__dot" aria-hidden="true"></span>{e(asset["name"])}</h3>
             <span class="asset__pair ltr">{e(asset["pair"])}</span>
           </header>
           <p class="asset__price ltr" data-live-price>—</p>
-          <p class="asset__unit">دلار آمریکا · {e(asset["unit"])}</p>
+          <p class="asset__unit">{e(asset["unit"])}</p>
           <p class="asset__note"><span data-live-note>در حال دریافت قیمت لحظه‌ای…</span></p>
         </article>'''
 
@@ -74,10 +74,10 @@ def build():
     ver = hashlib.sha1(css_text.encode()).hexdigest()[:8]
     (ROOT / 'assets/css/market-pulse.gen.css').write_text(css_text, encoding='utf-8', newline='\n')
 
-    title = 'نبض بازار | قیمت لحظه‌ای طلا، بیت‌کوین و اتریوم و تقویم اقتصادی — هرم آبی'
-    desc = ('نبض بازار هرم آبی: قیمت لحظه‌ای طلا، بیت‌کوین و اتریوم و تقویم اقتصادی سه ماه آینده؛ '
+    title = 'نبض بازار | قیمت لحظه‌ای طلا، نقره، نفت، S&P 500 و کریپتو — هرم آبی'
+    desc = ('نبض بازار هرم آبی: قیمت لحظه‌ای طلا، نقره، نفت برنت، S&P 500، بیت‌کوین و اتریوم و تقویم اقتصادی سه ماه آینده؛ '
             'جلسات فدرال رزرو و بانک مرکزی اروپا و انتشار CPI، اشتغال، GDP و PCE به وقت تهران.')
-    lead = 'قیمت لحظه‌ای طلا، بیت‌کوین و اتریوم، همراه با تقویم جلسات و داده‌های اقتصادی مهم سه ماه آینده.'
+    lead = 'قیمت لحظه‌ای طلا، نقره، نفت برنت، شاخص S&P 500، بیت‌کوین و اتریوم، همراه با تقویم جلسات و داده‌های اقتصادی مهم سه ماه آینده.'
     url = f'{SITE}/market-pulse'
     ld = {
         '@context': 'https://schema.org',
@@ -92,7 +92,7 @@ def build():
                 'dateModified': calendar['updated'],
                 'isPartOf': {'@id': f'{SITE}/#website'},
                 'publisher': {'@id': f'{SITE}/#org'},
-                'about': [{'@type': 'Thing', 'name': n} for n in ('طلا', 'بیت‌کوین', 'اتریوم', 'تقویم اقتصادی')],
+                'about': [{'@type': 'Thing', 'name': n} for n in ('طلا', 'نقره', 'نفت برنت', 'S&P 500', 'بیت‌کوین', 'اتریوم', 'تقویم اقتصادی')],
             },
             {
                 '@type': 'BreadcrumbList',
@@ -104,7 +104,7 @@ def build():
         ],
     }
     i18n = {'en': {
-        'pageTitle': 'Market Pulse | Live gold, Bitcoin & Ethereum prices and economic calendar — Blue Pyramid',
+        'pageTitle': 'Market Pulse | Live gold, silver, oil, S&P 500 and crypto prices — Blue Pyramid',
         'crumbLabel': 'Breadcrumb',
         'phoneDisplay': '+98&nbsp;920&nbsp;741&nbsp;3175',
     }}
@@ -132,7 +132,7 @@ def build():
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{SITE}/assets/img/og-image.jpg">
 
-{head_common}  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=4.1">
+{head_common}  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=4.3">
   <link rel="stylesheet" href="/assets/css/market-pulse.gen.css?v={ver}">
   <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=2)}
@@ -198,7 +198,7 @@ def build():
 {json.dumps(i18n, ensure_ascii=False, indent=2)}
 </script>
 <script src="/assets/js/site.js?v=2.9" defer></script>
-<script src="/assets/js/market-pulse.js?v=2.0" defer></script>
+<script src="/assets/js/market-pulse.js?v=2.2" defer></script>
 </body>
 </html>
 '''
