@@ -376,8 +376,8 @@
   function daysUntil(iso, today) { return Math.round((Date.parse(iso + 'T00:00:00Z') - today) / 864e5); }
   function initPulseDates() {
     var chips = $$('[data-until]');
-    var tl = $('#tl');
-    if (!chips.length && !tl) return;
+    var tls = $$('.tl[data-start]');
+    if (!chips.length && !tls.length) return;
     var today = tehranToday();
     chips.forEach(function (c) {
       var n = daysUntil(c.getAttribute('data-until'), today);
@@ -387,21 +387,21 @@
       num.textContent = n === 0 ? 'امروز:' : 'برگزار شد:';
       if (unit) unit.hidden = true;
     });
-    if (tl) {
+    tls.forEach(function (tl) {
       var evs = $$('.tl__ev', tl);
       evs.forEach(function (ev) {
         var n = daysUntil(ev.getAttribute('data-date'), today);
         if (n < 0) ev.classList.add('is-past');
         if (n === 0) { ev.classList.add('is-today'); tl.classList.add('has-today-event'); }
       });
+      // "today" marker: only on the timeline whose date range contains today
       var marker = $('.tl__today', tl);
-      if (marker && evs.length) {
-        var start = Date.parse($('time[datetime]', document.querySelector('.pulse-hero__date')).getAttribute('datetime') + 'T00:00:00Z');
-        var end = Date.parse(evs[evs.length - 1].getAttribute('data-date') + 'T00:00:00Z');
-        var x = Math.min(Math.max((today - start) / (end - start), 0), 1) * 100;
-        marker.style.setProperty('--x', x.toFixed(2) + '%');
-      }
-    }
+      if (!marker) return;
+      var start = Date.parse(tl.getAttribute('data-start') + 'T00:00:00Z');
+      var end = Date.parse(tl.getAttribute('data-end') + 'T00:00:00Z');
+      if (today < start || today > end) { marker.hidden = true; return; }
+      marker.style.setProperty('--x', ((today - start) / (end - start) * 100).toFixed(2) + '%');
+    });
   }
 
   /* --------------------------------------------------------------- intro */

@@ -108,3 +108,38 @@
   });
   tick();
 })();
+
+/* Economic calendar: category filter + "next important event" line. */
+(function () {
+  'use strict';
+  var cal = document.querySelector('[data-cal]');
+  if (!cal) return;
+  var FA = '۰۱۲۳۴۵۶۷۸۹';
+  function fa(s) { return String(s).replace(/[0-9]/g, function (d) { return FA[+d]; }); }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.cal-chip'), function (chip) {
+    chip.addEventListener('click', function () {
+      var on = chip.getAttribute('aria-pressed') !== 'true';
+      chip.setAttribute('aria-pressed', String(on));
+      cal.classList.toggle('hide-' + chip.getAttribute('data-cat'), !on);
+    });
+  });
+
+  var next = document.querySelector('[data-cal-next]');
+  if (!next) return;
+  var now = Date.now();
+  var evs = Array.prototype.slice.call(cal.querySelectorAll('.tl__ev:not(.tl__ev--muted)'));
+  var upcoming = evs.map(function (li) {
+    var t = li.querySelector('time').getAttribute('datetime');
+    var ms = Date.parse(t.length > 10 ? t : t + 'T00:00:00Z');
+    return { li: li, ms: ms, allDay: t.length <= 10 };
+  }).filter(function (x) { return x.ms + (x.allDay ? 864e5 : 0) > now; })
+    .sort(function (a, b) { return a.ms - b.ms; })[0];
+  if (!upcoming) return;
+  var hours = (upcoming.ms - now) / 36e5;
+  var rel = hours < 1 ? 'کمتر از یک ساعت دیگر' : hours < 24 ? fa(Math.round(hours)) + ' ساعت دیگر' : fa(Math.ceil(hours / 24)) + ' روز دیگر';
+  next.textContent = 'رویداد مهم بعدی: ' + upcoming.li.querySelector('b').textContent + ' — ' +
+    upcoming.li.querySelector('time').textContent + ' (' + rel + ')';
+  next.hidden = false;
+  upcoming.li.classList.add('is-next');
+})();

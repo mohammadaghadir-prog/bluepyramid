@@ -296,3 +296,76 @@
   .drivers { grid-template-columns: 1fr; }
   .ladder { height: 340px; }
 }
+
+/* ---- economic calendar (3 months, one timeline per month) ---- */
+.pulse { --c-fed: #38d6ff; --c-infl: #ff8aa0; --c-jobs: #e7b84b; --c-growth: #3fd6a0; --c-crypto: #f7931a; --c-event: #a9b4c6; }
+.cal-next {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(56, 214, 255, 0.4);
+  background: rgba(56, 214, 255, 0.07);
+  color: var(--text);
+  font-weight: 700;
+}
+.cal-next::before { content: ''; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); animation: ping 2.2s infinite; }
+.cal-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.cal-filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.cal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  font-size: 0.86rem;
+  transition: opacity 0.2s, border-color 0.2s, background 0.2s;
+}
+.cal-chip:hover { background: var(--surface-2); }
+.cal-chip[aria-pressed="false"] { opacity: 0.45; }
+.cal-chip[aria-pressed="false"] .cal-chip__sw { background: transparent; }
+.cal-chip__sw { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--cc); background: var(--cc); }
+.cal-chip[data-cat="fed"] { --cc: var(--c-fed); }
+.cal-chip[data-cat="infl"] { --cc: var(--c-infl); }
+.cal-chip[data-cat="jobs"] { --cc: var(--c-jobs); }
+.cal-chip[data-cat="growth"] { --cc: var(--c-growth); }
+.cal-chip[data-cat="crypto"] { --cc: var(--c-crypto); }
+.cal-chip[data-cat="event"] { --cc: var(--c-event); }
+.cal-ics svg { width: 18px; height: 18px; }
+
+.cal { display: grid; gap: 8px; padding-block: 18px; }
+.cal-month + .cal-month { border-top: 1px solid var(--border); padding-top: 18px; }
+.cal-month__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.cal-month__head h3 { font-size: 1.2rem; font-weight: 900; }
+.cal-month__jal { font-size: 0.86rem; color: var(--text-muted); }
+.cal-month__count { margin-inline-start: auto; font-size: 0.8rem; color: var(--text-dim); }
+.cal-tl { height: 250px; }
+.cal .tl__track, .cal .tl__ev { top: 50%; }
+.cal .tl__ev { --cc: var(--c-event); }
+.cal .tl__ev[data-cat="fed"] { --cc: var(--c-fed); }
+.cal .tl__ev[data-cat="infl"] { --cc: var(--c-infl); }
+.cal .tl__ev[data-cat="jobs"] { --cc: var(--c-jobs); }
+.cal .tl__ev[data-cat="growth"] { --cc: var(--c-growth); }
+.cal .tl__ev[data-cat="crypto"] { --cc: var(--c-crypto); }
+.cal .tl__dot { background: var(--cc); }
+.cal .tl__ev--major .tl__dot { background: var(--cc); box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 0 16px var(--cc); }
+.cal .tl__ev--muted .tl__dot { background: var(--bg-1); border: 1.5px solid var(--cc); }
+.cal .tl__txt b { color: var(--text); }
+.cal .tl__ev--major .tl__txt b { color: #fff; }
+.tl__detail { display: none; font-size: 0.72rem; color: var(--text-dim); line-height: 1.5; }
+.cal .tl__ev.is-next .tl__txt b { color: var(--cyan); }
+.cal .tl__ev.is-next .tl__dot { animation: ping 2.2s infinite; }
+.cal.hide-fed [data-cat="fed"], .cal.hide-infl [data-cat="infl"], .cal.hide-jobs [data-cat="jobs"],
+.cal.hide-growth [data-cat="growth"], .cal.hide-crypto [data-cat="crypto"], .cal.hide-event [data-cat="event"] { display: none; }
+.cal-src { margin-top: 14px; }
+@media (max-width: 860px) {
+  .cal-tl { height: auto; }
+  .cal-month__head { margin-bottom: 14px; }
+  .tl__detail { display: block; flex-basis: 100%; }
+  .cal .tl__txt { flex-wrap: wrap; }
+}

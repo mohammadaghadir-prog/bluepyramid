@@ -19,6 +19,9 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+import sys  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import cal  # noqa: E402  (economic calendar section + .ics)
 HERE = Path(__file__).resolve().parent
 SITE = 'https://bluepyramid.pages.dev'
 FA_DIGITS = str.maketrans('0123456789', '۰۱۲۳۴۵۶۷۸۹')
@@ -152,29 +155,6 @@ def drivers(data):
     return '\n          '.join(cards)
 
 
-def timeline(data, css):
-    start, end = d(data['reportDate']), d(data['horizonDate'])
-    span = (end - start).days
-    slots = {'u1': -99.0, 'd1': -99.0, 'u2': -99.0, 'd2': -99.0}
-    GAP = 13.0  # minimum % distance between labels sharing a row
-    out = []
-    for i, ev in enumerate(data['events'], 1):
-        x = (d(ev['date']) - start).days / span * 100
-        slot = next((k for k in ('u1', 'd1', 'u2', 'd2') if x - slots[k] >= GAP), 'd2')
-        slots[slot] = x
-        css.append(f'#tl .e{i}{{--x:{x:.2f}%}}')
-        cls = ['tl__ev', f'e{i}']
-        for flag in ('major', 'muted', 'end'):
-            if ev.get(flag):
-                cls.append(f'tl__ev--{flag}')
-        out.append(
-            f'<li class="{" ".join(cls)}" data-slot="{slot}" data-date="{ev["date"]}">'
-            f'<span class="tl__dot" aria-hidden="true"></span>'
-            f'<span class="tl__txt"><time datetime="{ev["date"]}">{e(ev["dateFa"])}</time>'
-            f'<b>{e(ev["title"])}</b></span></li>')
-    return '\n            '.join(out)
-
-
 def scenarios(data):
     out = []
     for i, sc in enumerate(data['scenarios']):
@@ -194,7 +174,7 @@ def build():
     hz = data['horizonFa']
 
     assets_html = '\n'.join(asset_card(a, hz, css) for a in data['assets'])
-    tl_html = timeline(data, css)
+    cal_html = cal.section(css)
     css_text = '\n'.join(css) + '\n'
     ver = hashlib.sha1(css_text.encode()).hexdigest()[:8]
     (ROOT / 'assets/css/market-pulse.gen.css').write_text(css_text, encoding='utf-8', newline='\n')
@@ -259,7 +239,7 @@ def build():
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{SITE}/assets/img/og-image.jpg">
 
-{head_common}  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=3.0">
+{head_common}  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=3.1">
   <link rel="stylesheet" href="/assets/css/market-pulse.gen.css?v={ver}">
   <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=2)}
@@ -320,22 +300,7 @@ def build():
     </div>
   </section>
 
-  <section class="section section--tight" aria-labelledby="events-title">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">Calendar</p>
-        <h2 class="section-title" id="events-title">رویدادها تا {e(hz)}</h2>
-      </div>
-      <div class="card tl-card" data-reveal>
-        <div class="tl" id="tl">
-          <span class="tl__track" aria-hidden="true"><span class="tl__today"><span>امروز</span></span></span>
-          <ol class="tl__events" role="list">
-            {tl_html}
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
+{cal_html}
 
   <section class="section section--tight" aria-labelledby="scen-title">
     <div class="container">
@@ -370,8 +335,8 @@ def build():
 {footer}<script type="application/json" id="i18n">
 {json.dumps(i18n, ensure_ascii=False, indent=2)}
 </script>
-<script src="/assets/js/site.js?v=2.8" defer></script>
-<script src="/assets/js/market-pulse.js?v=1.1" defer></script>
+<script src="/assets/js/site.js?v=2.9" defer></script>
+<script src="/assets/js/market-pulse.js?v=1.2" defer></script>
 </body>
 </html>
 '''

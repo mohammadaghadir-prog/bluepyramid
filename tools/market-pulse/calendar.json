@@ -1,0 +1,41 @@
+{
+  "title": "تقویم اقتصادی سه ماه آینده",
+  "from": "2026-11-01",
+  "to": "2027-01-31",
+  "updated": "2026-10-30",
+  "categories": {
+    "fed":    { "label": "فدرال رزرو و بانک‌های مرکزی" },
+    "infl":   { "label": "تورم" },
+    "jobs":   { "label": "اشتغال" },
+    "growth": { "label": "رشد اقتصادی" },
+    "crypto": { "label": "سررسید اپشن کریپتو" },
+    "event":  { "label": "تعطیلی و رویداد" }
+  },
+  "events": [
+    { "date": "2026-11-03", "cat": "event",  "impact": 2, "title": "انتخابات میان‌دوره‌ای آمریکا", "allDay": true },
+    { "date": "2026-11-06", "time": "13:30", "cat": "jobs",   "impact": 3, "title": "اشتغال NFP",   "detail": "گزارش اشتغال اکتبر" },
+    { "date": "2026-11-10", "time": "13:30", "cat": "infl",   "impact": 3, "title": "تورم CPI",     "detail": "تورم مصرف‌کننده اکتبر" },
+    { "date": "2026-11-13", "time": "13:30", "cat": "infl",   "impact": 2, "title": "PPI",          "detail": "تورم تولیدکننده اکتبر" },
+    { "date": "2026-11-25", "time": "13:30", "cat": "growth", "impact": 2, "title": "GDP و PCE",    "detail": "برآورد دوم GDP فصل سوم و تورم PCE اکتبر" },
+    { "date": "2026-11-26", "cat": "event",  "impact": 1, "title": "تعطیلی شکرگزاری", "detail": "بازارهای آمریکا تعطیل", "allDay": true },
+    { "date": "2026-11-27", "time": "08:00", "cat": "crypto", "impact": 2, "title": "سررسید ماهانه اپشن کریپتو", "detail": "Deribit" },
+
+    { "date": "2026-12-04", "time": "13:30", "cat": "jobs",   "impact": 3, "title": "اشتغال NFP",   "detail": "گزارش اشتغال نوامبر" },
+    { "date": "2026-12-09", "time": "19:00", "cat": "fed",    "impact": 3, "title": "تصمیم فدرال", "detail": "همراه با پیش‌بینی‌های اقتصادی (SEP) و نشست خبری" },
+    { "date": "2026-12-10", "time": "13:30", "cat": "infl",   "impact": 3, "title": "تورم CPI",     "detail": "تورم مصرف‌کننده نوامبر" },
+    { "date": "2026-12-15", "time": "13:30", "cat": "infl",   "impact": 2, "title": "PPI",          "detail": "تورم تولیدکننده نوامبر" },
+    { "date": "2026-12-17", "time": "13:15", "cat": "fed",    "impact": 2, "title": "تصمیم بانک مرکزی اروپا", "detail": "ECB" },
+    { "date": "2026-12-23", "time": "13:30", "cat": "growth", "impact": 2, "title": "GDP و PCE",    "detail": "برآورد سوم GDP فصل سوم و تورم PCE نوامبر" },
+    { "date": "2026-12-25", "time": "08:00", "cat": "crypto", "impact": 3, "title": "سررسید فصلی اپشن کریپتو", "detail": "بزرگ‌ترین سررسید سه‌ماهه؛ هم‌زمان با تعطیلی کریسمس" },
+
+    { "date": "2027-01-01", "cat": "event",  "impact": 1, "title": "تعطیلی سال نو", "detail": "بازارهای آمریکا تعطیل", "allDay": true },
+    { "date": "2027-01-08", "time": "13:30", "cat": "jobs",   "impact": 3, "title": "اشتغال NFP",   "detail": "گزارش اشتغال دسامبر" },
+    { "date": "2027-01-13", "time": "13:30", "cat": "infl",   "impact": 3, "title": "تورم CPI",     "detail": "تورم مصرف‌کننده دسامبر" },
+    { "date": "2027-01-14", "time": "13:30", "cat": "infl",   "impact": 2, "title": "PPI",          "detail": "تورم تولیدکننده دسامبر" },
+    { "date": "2027-01-18", "cat": "event",  "impact": 1, "title": "تعطیلی مارتین لوتر کینگ", "detail": "بازارهای آمریکا تعطیل", "allDay": true },
+    { "date": "2027-01-27", "time": "19:00", "cat": "fed",    "impact": 3, "title": "تصمیم فدرال", "detail": "نشست ژانویه (تاریخ ۲۰۲۷ تا نشست قبلی قطعی نیست)" },
+    { "date": "2027-01-28", "time": "13:30", "cat": "growth", "impact": 3, "title": "GDP و PCE",    "detail": "برآورد اولیه GDP فصل چهارم و تورم PCE دسامبر" },
+    { "date": "2027-01-29", "time": "08:00", "cat": "crypto", "impact": 2, "title": "سررسید ماهانه اپشن کریپتو", "detail": "Deribit" }
+  ],
+  "sources": "منابع: فدرال رزرو (FOMC)، اداره آمار کار آمریکا (BLS)، اداره تحلیل اقتصادی آمریکا (BEA)، بانک مرکزی اروپا (ECB)؛ سررسید اپشن‌ها آخرین جمعه هر ماه ساعت ۸ UTC در Deribit."
+}
