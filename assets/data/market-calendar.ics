@@ -45,8 +45,8 @@ DTSTAMP:20261030T000000Z
 DTSTART:20261125T133000Z
 DTEND:20261125T140000Z
 SUMMARY:GDP و PCE
-DESCRIPTION:برآورد دوم GDP فصل سوم و تورم PCE اکتب
- ر — نبض بازار هرم آبی
+DESCRIPTION:تولید ناخالص داخلی آمریکا و تورم PC
+ E (شاخص محبوب فدرال) — نبض بازار هرم آبی
 END:VEVENT
 BEGIN:VEVENT
 UID:e1d3c6964a9a78b3@bluepyramid.pages.dev
@@ -107,7 +107,8 @@ DTSTAMP:20261030T000000Z
 DTSTART:20261217T131500Z
 DTEND:20261217T134500Z
 SUMMARY:تصمیم بانک مرکزی اروپا
-DESCRIPTION:ECB — نبض بازار هرم آبی
+DESCRIPTION:ECB — نرخ بهره و نشست خبری — نبض باز
+ ار هرم آبی
 END:VEVENT
 BEGIN:VEVENT
 UID:bd668d556c5767ae@bluepyramid.pages.dev
@@ -115,8 +116,8 @@ DTSTAMP:20261030T000000Z
 DTSTART:20261223T133000Z
 DTEND:20261223T140000Z
 SUMMARY:GDP و PCE
-DESCRIPTION:برآورد سوم GDP فصل سوم و تورم PCE نوام
- بر — نبض بازار هرم آبی
+DESCRIPTION:تولید ناخالص داخلی آمریکا و تورم PC
+ E (شاخص محبوب فدرال) — نبض بازار هرم آبی
 END:VEVENT
 BEGIN:VEVENT
 UID:af4003161345dc80@bluepyramid.pages.dev
@@ -124,8 +125,17 @@ DTSTAMP:20261030T000000Z
 DTSTART:20261225T080000Z
 DTEND:20261225T083000Z
 SUMMARY:سررسید فصلی اپشن کریپتو
-DESCRIPTION:بزرگ‌ترین سررسید سه‌ماهه؛ هم‌زم
- ان با تعطیلی کریسمس — نبض بازار هرم آبی
+DESCRIPTION:بزرگ‌ترین سررسید سه‌ماهه در Deribit 
+ — نبض بازار هرم آبی
+END:VEVENT
+BEGIN:VEVENT
+UID:d06472a91be4f548@bluepyramid.pages.dev
+DTSTAMP:20261030T000000Z
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+SUMMARY:تعطیلی کریسمس
+DESCRIPTION:بازارهای آمریکا تعطیل — نبض بازار
+  هرم آبی
 END:VEVENT
 BEGIN:VEVENT
 UID:1beb0ba638228d46@bluepyramid.pages.dev
@@ -178,8 +188,8 @@ DTSTAMP:20261030T000000Z
 DTSTART:20270127T190000Z
 DTEND:20270127T193000Z
 SUMMARY:تصمیم فدرال
-DESCRIPTION:نشست ژانویه (تاریخ ۲۰۲۷ تا نشست قب
- لی قطعی نیست) — نبض بازار هرم آبی
+DESCRIPTION:بیانیه و نشست خبری رئیس فدرال — نب
+ ض بازار هرم آبی
 END:VEVENT
 BEGIN:VEVENT
 UID:da1998dc09c78d2d@bluepyramid.pages.dev
@@ -187,8 +197,8 @@ DTSTAMP:20261030T000000Z
 DTSTART:20270128T133000Z
 DTEND:20270128T140000Z
 SUMMARY:GDP و PCE
-DESCRIPTION:برآورد اولیه GDP فصل چهارم و تورم PCE 
- دسامبر — نبض بازار هرم آبی
+DESCRIPTION:تولید ناخالص داخلی آمریکا و تورم PC
+ E (شاخص محبوب فدرال) — نبض بازار هرم آبی
 END:VEVENT
 BEGIN:VEVENT
 UID:374b454319c6b3a5@bluepyramid.pages.dev

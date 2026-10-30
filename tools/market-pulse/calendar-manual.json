@@ -1,0 +1,148 @@
+{
+  "_note": "Fallback dates used only when the official source can't be fetched. BLS blocks some networks, so its schedule is kept here too; refresh from bls.gov/schedule when new years are published.",
+  "events": [
+    {
+      "date": "2026-11-03",
+      "cat": "event",
+      "impact": 2,
+      "title": "انتخابات میان‌دوره‌ای آمریکا",
+      "allDay": true,
+      "src": "manual"
+    },
+    {
+      "date": "2026-11-06",
+      "time": "13:30",
+      "cat": "jobs",
+      "impact": 3,
+      "title": "اشتغال NFP",
+      "detail": "گزارش اشتغال اکتبر",
+      "src": "bls"
+    },
+    {
+      "date": "2026-11-10",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 3,
+      "title": "تورم CPI",
+      "detail": "تورم مصرف‌کننده اکتبر",
+      "src": "bls"
+    },
+    {
+      "date": "2026-11-13",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 2,
+      "title": "PPI",
+      "detail": "تورم تولیدکننده اکتبر",
+      "src": "bls"
+    },
+    {
+      "date": "2026-12-04",
+      "time": "13:30",
+      "cat": "jobs",
+      "impact": 3,
+      "title": "اشتغال NFP",
+      "detail": "گزارش اشتغال نوامبر",
+      "src": "bls"
+    },
+    {
+      "date": "2026-12-10",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 3,
+      "title": "تورم CPI",
+      "detail": "تورم مصرف‌کننده نوامبر",
+      "src": "bls"
+    },
+    {
+      "date": "2026-12-15",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 2,
+      "title": "PPI",
+      "detail": "تورم تولیدکننده نوامبر",
+      "src": "bls"
+    },
+    {
+      "date": "2027-01-08",
+      "time": "13:30",
+      "cat": "jobs",
+      "impact": 3,
+      "title": "اشتغال NFP",
+      "detail": "گزارش اشتغال دسامبر",
+      "src": "bls"
+    },
+    {
+      "date": "2027-01-13",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 3,
+      "title": "تورم CPI",
+      "detail": "تورم مصرف‌کننده دسامبر",
+      "src": "bls"
+    },
+    {
+      "date": "2027-01-14",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 2,
+      "title": "PPI",
+      "detail": "تورم تولیدکننده دسامبر",
+      "src": "bls"
+    },
+    {
+      "date": "2027-02-05",
+      "time": "13:30",
+      "cat": "jobs",
+      "impact": 3,
+      "title": "اشتغال NFP",
+      "detail": "گزارش اشتغال ژانویه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-02-11",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 3,
+      "title": "تورم CPI",
+      "detail": "تورم مصرف‌کننده ژانویه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-02-12",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 2,
+      "title": "PPI",
+      "detail": "تورم تولیدکننده ژانویه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-03-05",
+      "time": "13:30",
+      "cat": "jobs",
+      "impact": 3,
+      "title": "اشتغال NFP",
+      "detail": "گزارش اشتغال فوریه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-03-10",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 3,
+      "title": "تورم CPI",
+      "detail": "تورم مصرف‌کننده فوریه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-03-12",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 2,
+      "title": "PPI",
+      "detail": "تورم تولیدکننده فوریه",
+      "src": "bls"
+    }
+  ]
+}

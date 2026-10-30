@@ -151,6 +151,12 @@ def section(css):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(ics.encode('utf-8'))
     ver = hashlib.sha1(ics.encode()).hexdigest()[:8]
+    status_path = HERE / 'calendar-status.json'
+    checked = ''
+    if status_path.exists():
+        st = json.loads(status_path.read_text(encoding='utf-8'))
+        t = datetime.strptime(st['checked'], '%Y-%m-%dT%H:%M:%SZ') + TEHRAN
+        checked = f'؛ آخرین بررسی: {fa(t.strftime("%Y/%m/%d %H:%M"))} به وقت تهران'
     chips = ''.join(
         f'<button type="button" class="cal-chip" data-cat="{k}" aria-pressed="true">'
         f'<span class="cal-chip__sw" aria-hidden="true"></span>{e(v["label"])}</button>'
@@ -170,6 +176,6 @@ def section(css):
       <div class="card tl-card cal" data-cal>
 {blocks}
       </div>
-      <p class="pulse-foot__src cal-src">{e(cal["sources"])} آخرین به‌روزرسانی تقویم: {fa(cal["updated"].replace("-", "/"))}.</p>
+      <p class="pulse-foot__src cal-src">{e(cal["sources"])} تقویم هر روز به‌طور خودکار از این منابع به‌روز می‌شود{checked}.</p>
     </div>
   </section>'''
