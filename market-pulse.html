@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="/assets/css/site.css?v=2.9">
   <script src="/assets/js/head.js?v=2.8"></script>
 
-  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=2.9">
+  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=3.0">
   <link rel="stylesheet" href="/assets/css/market-pulse.gen.css?v=1870c1b0">
   <script type="application/ld+json">
 {
@@ -139,6 +139,7 @@
       <p class="pulse-hero__kicker" data-enter data-d="1">گزارش بازار طلا و کریپتو</p>
       <h1 id="page-title" data-enter="headline" data-d="2">نبض <span class="text-gradient">بازار</span></h1>
       <p class="pulse-hero__lead" data-enter data-d="3">طلا، بیت‌کوین و اتریوم هر سه در کف رنج اکتبر هستند. سه روز تا تصمیم فدرال مانده.</p>
+      <p class="live-status" data-live-status data-state="report" role="status" data-enter data-d="4">قیمت‌های زمان گزارش</p>
       <p class="pulse-hero__date" data-enter data-d="4"><span class="live-dot" aria-hidden="true"></span><time datetime="2026-10-25">یکشنبه ۳ آبان ۱۴۰۵</time><span class="sep" aria-hidden="true">·</span>۲۵ اکتبر ۲۰۲۶ · داده‌ها تا ساعت ۲۱:۲۰ به وقت تهران</p>
       <ul class="countdowns" role="list" data-enter data-d="5">
           <li class="cd" data-until="2026-10-28"><span class="cd__num">۳</span><span class="cd__unit">روز تا</span> <span class="cd__what">تصمیم فدرال، ۲۸ اکتبر</span></li>
@@ -152,7 +153,7 @@
       <div class="section-head pulse-head" data-reveal>
         <p class="eyebrow">Price Ladder</p>
         <h2 class="section-title" id="ladder-title">نردبان قیمت تا ۲۷ نوامبر</h2>
-        <p class="section-lead">مقیاس هر نردبان خطی است. سطوح بالای قیمت فعلی مقاومت‌اند و سطوح پایین آن حمایت.</p>
+        <p class="section-lead">قیمت‌ها لحظه‌ای هستند؛ سطوح حمایت و مقاومت از گزارش یکشنبه ۳ آبان ۱۴۰۵ است. مقیاس هر نردبان خطی است: سطوح بالای قیمت فعلی مقاومت‌اند و سطوح پایین آن حمایت.</p>
         <ul class="legend" role="list">
           <li><span class="legend__sw legend__sw--res" aria-hidden="true"></span>مقاومت</li>
           <li><span class="legend__sw legend__sw--sup" aria-hidden="true"></span>حمایت</li>
@@ -161,17 +162,19 @@
         </ul>
       </div>
       <div class="assets-grid">
-        <article class="card asset asset--gold" data-reveal aria-labelledby="as-xau">
+        <article class="card asset asset--gold" data-reveal aria-labelledby="as-xau"
+                 data-asset="xau" data-report-price="3996.8" data-decimals="1">
           <header class="asset__head">
             <h3 id="as-xau"><span class="asset__dot" aria-hidden="true"></span>طلا</h3>
             <span class="asset__pair ltr">XAU/USD</span>
           </header>
-          <p class="asset__price ltr">$3,996.8</p>
-          <p class="asset__note">بسته شدن جمعه ۲۳ اکتبر</p>
+          <p class="asset__price ltr" data-live-price>$3,996.8</p>
+          <p class="asset__note"><span data-live-note>بسته شدن جمعه ۲۳ اکتبر</span></p>
+          <p class="asset__chg" data-live-chg hidden></p>
           <div class="asset__badges"><span class="badge badge--down">روند روزانه: نزولی</span><span class="badge">۱۵٪ زیر سقف ۲۵ آگوست</span></div>
           <figure class="asset__ladder">
-            <figcaption class="sr-only">نردبان قیمت طلا تا ۲۷ نوامبر؛ قیمت فعلی $3,996.8</figcaption>
-            <div class="ladder" id="lad-xau">
+            <figcaption class="sr-only">نردبان قیمت طلا تا ۲۷ نوامبر؛ قیمت زمان گزارش $3,996.8</figcaption>
+            <div class="ladder" id="lad-xau" data-lo="3702.5000" data-hi="4307.5000">
               <span class="ladder__sigma" aria-hidden="true"></span>
               <ul class="ladder__levels" role="list">
                 <li class="lv lv--res lv--zone l1"><span class="lv__band" aria-hidden="true"></span><span class="lv__lbl"><span class="sr-only">مقاومت: </span>4,200–4,226</span></li>
@@ -186,17 +189,19 @@
           </figure>
           <dl class="asset__stats"><div><dt>دامنه <span class="ltr">۱</span>σ تا <span class="ltr">۲۷</span> نوامبر</dt><dd><span class="ltr">3,730–4,280</span></dd></div><div><dt>نوسان فرضی سالانه</dt><dd><span class="ltr">22%</span></dd></div><div><dt>افت هفته گذشته</dt><dd><span class="ltr">−4%</span></dd></div></dl>
         </article>
-        <article class="card asset asset--btc" data-reveal aria-labelledby="as-btc">
+        <article class="card asset asset--btc" data-reveal aria-labelledby="as-btc"
+                 data-asset="btc" data-report-price="80770" data-decimals="0">
           <header class="asset__head">
             <h3 id="as-btc"><span class="asset__dot" aria-hidden="true"></span>بیت‌کوین</h3>
             <span class="asset__pair ltr">BTC/USD</span>
           </header>
-          <p class="asset__price ltr">$80,770</p>
-          <p class="asset__note">لحظه‌ای، ۲۵ اکتبر</p>
+          <p class="asset__price ltr" data-live-price>$80,770</p>
+          <p class="asset__note"><span data-live-note>لحظه‌ای، ۲۵ اکتبر</span></p>
+          <p class="asset__chg" data-live-chg hidden></p>
           <div class="asset__badges"><span class="badge">اصلاح داخل رنج ۷۹ تا ۸۷ هزار</span><span class="badge">۷.۶٪ زیر سقف ۲۱ سپتامبر</span></div>
           <figure class="asset__ladder">
-            <figcaption class="sr-only">نردبان قیمت بیت‌کوین تا ۲۷ نوامبر؛ قیمت فعلی $80,770</figcaption>
-            <div class="ladder" id="lad-btc">
+            <figcaption class="sr-only">نردبان قیمت بیت‌کوین تا ۲۷ نوامبر؛ قیمت زمان گزارش $80,770</figcaption>
+            <div class="ladder" id="lad-btc" data-lo="71850.0000" data-hi="90550.0000">
               <span class="ladder__sigma" aria-hidden="true"></span>
               <ul class="ladder__levels" role="list">
                 <li class="lv lv--res lv--zone l1"><span class="lv__band" aria-hidden="true"></span><span class="lv__lbl"><span class="sr-only">مقاومت: </span>86,500–87,400</span></li>
@@ -211,17 +216,19 @@
           </figure>
           <dl class="asset__stats"><div><dt>دامنه <span class="ltr">۱</span>σ تا <span class="ltr">۲۷</span> نوامبر</dt><dd><span class="ltr">72,700–89,700</span></dd></div><div><dt>نوسان فرضی سالانه</dt><dd><span class="ltr">35%</span></dd></div><div><dt>خروج از ETFها در <span class="ltr">۲</span> روز</dt><dd><span class="ltr">$773M</span></dd></div></dl>
         </article>
-        <article class="card asset asset--eth" data-reveal aria-labelledby="as-eth">
+        <article class="card asset asset--eth" data-reveal aria-labelledby="as-eth"
+                 data-asset="eth" data-report-price="2354" data-decimals="2">
           <header class="asset__head">
             <h3 id="as-eth"><span class="asset__dot" aria-hidden="true"></span>اتریوم</h3>
             <span class="asset__pair ltr">ETH/USD</span>
           </header>
-          <p class="asset__price ltr">$2,354</p>
-          <p class="asset__note">لحظه‌ای، ۲۵ اکتبر</p>
+          <p class="asset__price ltr" data-live-price>$2,354</p>
+          <p class="asset__note"><span data-live-note>لحظه‌ای، ۲۵ اکتبر</span></p>
+          <p class="asset__chg" data-live-chg hidden></p>
           <div class="asset__badges"><span class="badge badge--down">روند روزانه: نزولی</span><span class="badge">۱۶٪ زیر سقف ۲۱ سپتامبر</span></div>
           <figure class="asset__ladder">
-            <figcaption class="sr-only">نردبان قیمت اتریوم تا ۲۷ نوامبر؛ قیمت فعلی $2,354</figcaption>
-            <div class="ladder" id="lad-eth">
+            <figcaption class="sr-only">نردبان قیمت اتریوم تا ۲۷ نوامبر؛ قیمت زمان گزارش $2,354</figcaption>
+            <div class="ladder" id="lad-eth" data-lo="1989.8000" data-hi="2786.2000">
               <span class="ladder__sigma" aria-hidden="true"></span>
               <ul class="ladder__levels" role="list">
                 <li class="lv lv--res lv--zone l1"><span class="lv__band" aria-hidden="true"></span><span class="lv__lbl"><span class="sr-only">مقاومت: </span>2,700–2,750</span></li>
@@ -375,5 +382,6 @@
 }
 </script>
 <script src="/assets/js/site.js?v=2.8" defer></script>
+<script src="/assets/js/market-pulse.js?v=1.1" defer></script>
 </body>
 </html>

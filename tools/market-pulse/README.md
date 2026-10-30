@@ -13,6 +13,9 @@ The page `/market-pulse` is generated from one file: `data.json`.
 3. Commit and push to `main`; Cloudflare Pages deploys it.
 
 Notes
+- Prices are live: `assets/js/market-pulse.js` polls `/api/prices` (functions/api/prices.js) every 15s.
+  Gold = Swissquote spot mid (fallback gold-api.com); BTC/ETH = Kraken (fallback Coinbase). The
+  endpoint is edge-cached for 8s. The levels, stats and scenarios still come from data.json.
 - Levels above the current price are drawn as resistance (red), below as support (green).
 - Countdown chips and the timeline's "today" marker are recalculated in the visitor's browser,
   so past dates show as «برگزار شد» automatically.

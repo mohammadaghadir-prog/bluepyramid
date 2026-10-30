@@ -58,6 +58,31 @@
 .asset__price { margin-top: 16px; font-size: clamp(2rem, 3.2vw, 2.7rem); font-weight: 900; line-height: 1.1; color: var(--c); font-variant-numeric: tabular-nums; }
 [dir="rtl"] .asset__price { text-align: right; }
 .asset__note { margin-top: 6px; font-size: 0.86rem; color: var(--text-dim); }
+.asset__chg { margin-top: 4px; font-size: 0.86rem; font-weight: 700; color: var(--text-muted); }
+.asset__chg.is-up { color: #6ee8bd; }
+.asset__chg.is-down { color: #ff9aac; }
+.asset__price { border-radius: 10px; }
+.asset__price.is-up { animation: flashUp 1.1s ease; }
+.asset__price.is-down { animation: flashDown 1.1s ease; }
+@keyframes flashUp { 0% { background: rgba(63, 214, 160, 0.28); } 100% { background: transparent; } }
+@keyframes flashDown { 0% { background: rgba(255, 111, 134, 0.28); } 100% { background: transparent; } }
+.asset.is-live .asset__dot { animation: ping 2.2s infinite; }
+
+.live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+.live-status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim); }
+.live-status[data-state="live"] { border-color: rgba(78, 224, 181, 0.45); color: var(--success); }
+.live-status[data-state="live"]::before { background: var(--success); box-shadow: 0 0 10px var(--success); animation: ping 2.2s infinite; }
+.live-status[data-state="error"] { border-color: rgba(255, 111, 134, 0.45); color: #ffb3bf; }
 .asset__badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .badge { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border-strong); font-size: 0.8rem; color: var(--text-muted); }
 .badge--down { border-color: rgba(255, 111, 134, 0.55); color: #ffb3bf; background: rgba(255, 111, 134, 0.08); }
@@ -111,7 +136,9 @@
   border-top: 2px solid var(--c);
   box-shadow: 0 0 12px var(--c);
   z-index: 2;
+  transition: top 0.8s var(--ease-out);
 }
+.ladder__price.is-off-scale { border-top-style: dashed; }
 .ladder__price b {
   position: absolute;
   left: 0;

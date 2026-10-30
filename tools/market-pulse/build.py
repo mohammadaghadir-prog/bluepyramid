@@ -108,7 +108,7 @@ def ladder(asset, css):
     css.append(f'#lad-{aid} .ladder__sigma{{--t:{top(s_hi):.2f}%;--h:{top(s_lo) - top(s_hi):.2f}%}}')
     css.append(f'#lad-{aid} .ladder__price{{--t:{top(asset["price"]):.2f}%}}')
     return (
-        f'<div class="ladder" id="lad-{aid}">\n'
+        f'<div class="ladder" id="lad-{aid}" data-lo="{lo:.4f}" data-hi="{hi:.4f}">\n'
         f'              <span class="ladder__sigma" aria-hidden="true"></span>\n'
         f'              <ul class="ladder__levels" role="list">\n                '
         + '\n                '.join(items) +
@@ -122,16 +122,18 @@ def asset_card(asset, horizon_fa, css):
         f'<span class="badge{" badge--down" if b.get("tone") == "down" else ""}">{e(b["text"])}</span>'
         for b in asset['badges'])
     stats = ''.join(f'<div><dt>{val(k)}</dt><dd>{val(v)}</dd></div>' for k, v in asset['stats'])
-    return f'''        <article class="card asset asset--{asset["color"]}" data-reveal aria-labelledby="as-{asset["id"]}">
+    return f'''        <article class="card asset asset--{asset["color"]}" data-reveal aria-labelledby="as-{asset["id"]}"
+                 data-asset="{asset["id"]}" data-report-price="{asset["price"]}" data-decimals="{asset.get("decimals", 0)}">
           <header class="asset__head">
             <h3 id="as-{asset["id"]}"><span class="asset__dot" aria-hidden="true"></span>{e(asset["name"])}</h3>
             <span class="asset__pair ltr">{e(asset["pair"])}</span>
           </header>
-          <p class="asset__price ltr">{e(asset["priceText"])}</p>
-          <p class="asset__note">{e(asset["priceNote"])}</p>
+          <p class="asset__price ltr" data-live-price>{e(asset["priceText"])}</p>
+          <p class="asset__note"><span data-live-note>{e(asset["priceNote"])}</span></p>
+          <p class="asset__chg" data-live-chg hidden></p>
           <div class="asset__badges">{badges}</div>
           <figure class="asset__ladder">
-            <figcaption class="sr-only">نردبان قیمت {e(asset["name"])} تا {e(horizon_fa)}؛ قیمت فعلی {e(asset["priceText"])}</figcaption>
+            <figcaption class="sr-only">نردبان قیمت {e(asset["name"])} تا {e(horizon_fa)}؛ قیمت زمان گزارش {e(asset["priceText"])}</figcaption>
             {ladder(asset, css)}
           </figure>
           <dl class="asset__stats">{stats}</dl>
@@ -257,7 +259,7 @@ def build():
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{SITE}/assets/img/og-image.jpg">
 
-{head_common}  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=2.9">
+{head_common}  <link rel="stylesheet" href="/assets/css/market-pulse.css?v=3.0">
   <link rel="stylesheet" href="/assets/css/market-pulse.gen.css?v={ver}">
   <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=2)}
@@ -278,6 +280,7 @@ def build():
       <p class="pulse-hero__kicker" data-enter data-d="1">گزارش بازار طلا و کریپتو</p>
       <h1 id="page-title" data-enter="headline" data-d="2">نبض <span class="text-gradient">بازار</span></h1>
       <p class="pulse-hero__lead" data-enter data-d="3">{e(data["headline"])}</p>
+      <p class="live-status" data-live-status data-state="report" role="status" data-enter data-d="4">قیمت‌های زمان گزارش</p>
       <p class="pulse-hero__date" data-enter data-d="4"><span class="live-dot" aria-hidden="true"></span><time datetime="{data["reportDate"]}">{e(data["dateFa"])}</time><span class="sep" aria-hidden="true">·</span>{e(data["dateLine"])}</p>
       <ul class="countdowns" role="list" data-enter data-d="5">
           {countdowns(data)}
@@ -290,7 +293,7 @@ def build():
       <div class="section-head pulse-head" data-reveal>
         <p class="eyebrow">Price Ladder</p>
         <h2 class="section-title" id="ladder-title">نردبان قیمت تا {e(hz)}</h2>
-        <p class="section-lead">مقیاس هر نردبان خطی است. سطوح بالای قیمت فعلی مقاومت‌اند و سطوح پایین آن حمایت.</p>
+        <p class="section-lead">قیمت‌ها لحظه‌ای هستند؛ سطوح حمایت و مقاومت از گزارش {e(data["dateFa"])} است. مقیاس هر نردبان خطی است: سطوح بالای قیمت فعلی مقاومت‌اند و سطوح پایین آن حمایت.</p>
         <ul class="legend" role="list">
           <li><span class="legend__sw legend__sw--res" aria-hidden="true"></span>مقاومت</li>
           <li><span class="legend__sw legend__sw--sup" aria-hidden="true"></span>حمایت</li>
@@ -368,6 +371,7 @@ def build():
 {json.dumps(i18n, ensure_ascii=False, indent=2)}
 </script>
 <script src="/assets/js/site.js?v=2.8" defer></script>
+<script src="/assets/js/market-pulse.js?v=1.1" defer></script>
 </body>
 </html>
 '''
