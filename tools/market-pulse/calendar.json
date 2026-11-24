@@ -1,8 +1,8 @@
 {
   "title": "تقویم اقتصادی سه ماه آینده",
-  "from": "2026-11-01",
-  "to": "2027-01-31",
-  "updated": "2026-10-30",
+  "from": "2026-12-01",
+  "to": "2027-02-28",
+  "updated": "2026-11-24",
   "categories": {
     "fed": {
       "label": "فدرال رزرو و بانک‌های مرکزی"
@@ -24,68 +24,6 @@
     }
   },
   "events": [
-    {
-      "date": "2026-11-03",
-      "cat": "event",
-      "impact": 2,
-      "title": "انتخابات میان‌دوره‌ای آمریکا",
-      "allDay": true,
-      "src": "manual"
-    },
-    {
-      "date": "2026-11-06",
-      "time": "13:30",
-      "cat": "jobs",
-      "impact": 3,
-      "title": "اشتغال NFP",
-      "detail": "گزارش اشتغال اکتبر",
-      "src": "bls"
-    },
-    {
-      "date": "2026-11-10",
-      "time": "13:30",
-      "cat": "infl",
-      "impact": 3,
-      "title": "تورم CPI",
-      "detail": "تورم مصرف‌کننده اکتبر",
-      "src": "bls"
-    },
-    {
-      "date": "2026-11-13",
-      "time": "13:30",
-      "cat": "infl",
-      "impact": 2,
-      "title": "PPI",
-      "detail": "تورم تولیدکننده اکتبر",
-      "src": "bls"
-    },
-    {
-      "date": "2026-11-25",
-      "time": "13:30",
-      "cat": "growth",
-      "impact": 2,
-      "title": "GDP و PCE",
-      "detail": "تولید ناخالص داخلی آمریکا و تورم PCE (شاخص محبوب فدرال)",
-      "src": "bea"
-    },
-    {
-      "date": "2026-11-26",
-      "cat": "event",
-      "impact": 1,
-      "title": "تعطیلی شکرگزاری",
-      "detail": "بازارهای آمریکا تعطیل",
-      "allDay": true,
-      "src": "rules"
-    },
-    {
-      "date": "2026-11-27",
-      "time": "08:00",
-      "cat": "crypto",
-      "impact": 2,
-      "title": "سررسید ماهانه اپشن کریپتو",
-      "detail": "Deribit",
-      "src": "rules"
-    },
     {
       "date": "2026-12-04",
       "time": "13:30",
@@ -223,6 +161,69 @@
     },
     {
       "date": "2027-01-29",
+      "time": "08:00",
+      "cat": "crypto",
+      "impact": 2,
+      "title": "سررسید ماهانه اپشن کریپتو",
+      "detail": "Deribit",
+      "src": "rules"
+    },
+    {
+      "date": "2027-02-04",
+      "time": "13:15",
+      "cat": "fed",
+      "impact": 2,
+      "title": "تصمیم بانک مرکزی اروپا",
+      "detail": "ECB — نرخ بهره و نشست خبری",
+      "src": "ecb"
+    },
+    {
+      "date": "2027-02-05",
+      "time": "13:30",
+      "cat": "jobs",
+      "impact": 3,
+      "title": "اشتغال NFP",
+      "detail": "گزارش اشتغال ژانویه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-02-11",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 3,
+      "title": "تورم CPI",
+      "detail": "تورم مصرف‌کننده ژانویه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-02-12",
+      "time": "13:30",
+      "cat": "infl",
+      "impact": 2,
+      "title": "PPI",
+      "detail": "تورم تولیدکننده ژانویه",
+      "src": "bls"
+    },
+    {
+      "date": "2027-02-15",
+      "cat": "event",
+      "impact": 1,
+      "title": "تعطیلی روز رؤسای جمهور",
+      "detail": "بازارهای آمریکا تعطیل",
+      "allDay": true,
+      "src": "rules"
+    },
+    {
+      "date": "2027-02-25",
+      "time": "13:30",
+      "cat": "growth",
+      "impact": 2,
+      "title": "GDP و PCE",
+      "detail": "تولید ناخالص داخلی آمریکا و تورم PCE (شاخص محبوب فدرال)",
+      "src": "bea"
+    },
+    {
+      "date": "2027-02-26",
       "time": "08:00",
       "cat": "crypto",
       "impact": 2,
